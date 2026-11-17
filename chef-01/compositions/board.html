@@ -1,0 +1,78 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Montserrat", sans-serif; }
+
+    .t { position: absolute; left: 0; right: 0; text-align: center; font-family: "Archivo Black", "Montserrat", sans-serif;
+         color: #fff; -webkit-text-stroke: 10px #2a1a12; paint-order: stroke fill; letter-spacing: -0.01em; line-height: 0.98;
+         text-shadow: 0 10px 0 rgba(42,26,18,0.35); }
+    .t span { display: inline-block; }
+    .y { color: #ffd23f; } .r { color: #e63b2e; }
+    #board-cam { position: absolute; inset: 0; transform-origin: 540px 980px; }
+    .chk { position: absolute; left: 120px; font: 900 70px/1 "Archivo Black", sans-serif; color: #fff; -webkit-text-stroke: 9px #2a1a12; paint-order: stroke fill; display: flex; align-items: center; gap: 26px; }
+    .chk i { display: inline-block; width: 86px; height: 86px; border-radius: 18px; background: #ffd23f; border: 8px solid #2a1a12; position: relative; }
+    .chk i::after { content: ""; position: absolute; left: 22px; top: 6px; width: 24px; height: 46px; border: solid #2a1a12; border-width: 0 12px 12px 0; transform: rotate(45deg); }
+    #board-c1 { top: 230px; } #board-c2 { top: 350px; }
+  </style>
+  <div id="root" data-composition-id="board" data-width="1080" data-height="1920">
+    <div id="board-cam">
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;inset:0">
+        <rect width="1080" height="1920" fill="#e9e1d3"/>
+        <rect x="60" y="600" width="960" height="680" rx="60" fill="#c08a55" stroke="#2a1a12" stroke-width="12"/>
+        <g stroke="#a8743f" stroke-width="6" fill="none" opacity="0.8">
+          <path d="M120 700 q300 -30 840 10 M110 820 q400 30 860 -10 M120 1180 q420 -30 840 20"/>
+        </g>
+        <!-- bistec entero a la derecha -->
+        <g stroke="#2a1a12" stroke-width="10" stroke-linejoin="round">
+          <path d="M620 760 Q900 740 920 900 Q930 1080 760 1120 L620 1120 Z" fill="#7a4423"/>
+        </g>
+        <!-- tajadas -->
+        <g id="board-sl0" stroke="#2a1a12" stroke-width="9" stroke-linejoin="round">
+          <path d="M520 770 l80 0 l0 350 l-80 0 z" fill="#7a4423"/>
+          <path d="M532 786 l56 0 l0 318 l-56 0 z" fill="#e2737d" stroke="none"/>
+          <path d="M546 810 l28 0 l0 270 l-28 0 z" fill="#f09aa0" stroke="none"/>
+        </g><g id="board-sl1" stroke="#2a1a12" stroke-width="9" stroke-linejoin="round">
+          <path d="M428 770 l80 0 l0 350 l-80 0 z" fill="#7a4423"/>
+          <path d="M440 786 l56 0 l0 318 l-56 0 z" fill="#e2737d" stroke="none"/>
+          <path d="M454 810 l28 0 l0 270 l-28 0 z" fill="#f09aa0" stroke="none"/>
+        </g><g id="board-sl2" stroke="#2a1a12" stroke-width="9" stroke-linejoin="round">
+          <path d="M336 770 l80 0 l0 350 l-80 0 z" fill="#7a4423"/>
+          <path d="M348 786 l56 0 l0 318 l-56 0 z" fill="#e2737d" stroke="none"/>
+          <path d="M362 810 l28 0 l0 270 l-28 0 z" fill="#f09aa0" stroke="none"/>
+        </g><g id="board-sl3" stroke="#2a1a12" stroke-width="9" stroke-linejoin="round">
+          <path d="M244 770 l80 0 l0 350 l-80 0 z" fill="#7a4423"/>
+          <path d="M256 786 l56 0 l0 318 l-56 0 z" fill="#e2737d" stroke="none"/>
+          <path d="M270 810 l28 0 l0 270 l-28 0 z" fill="#f09aa0" stroke="none"/>
+        </g><g id="board-sl4" stroke="#2a1a12" stroke-width="9" stroke-linejoin="round">
+          <path d="M152 770 l80 0 l0 350 l-80 0 z" fill="#7a4423"/>
+          <path d="M164 786 l56 0 l0 318 l-56 0 z" fill="#e2737d" stroke="none"/>
+          <path d="M178 810 l28 0 l0 270 l-28 0 z" fill="#f09aa0" stroke="none"/>
+        </g>
+        <g id="board-knife" stroke="#2a1a12" stroke-width="9" stroke-linejoin="round">
+          <path d="M610 520 L640 520 L640 980 Q625 1010 600 980 Z" fill="#dfe4e8"/>
+          <rect x="598" y="330" width="54" height="200" rx="18" fill="#2e2e33"/>
+        </g>
+        <!-- reloj de reposo -->
+        <g id="board-clock" transform="translate(870 470)" stroke="#2a1a12" stroke-width="9">
+          <circle r="80" fill="#fff"/><path id="board-hand" d="M0 0 V-56" stroke-linecap="round"/><path d="M0 0 H38" stroke-linecap="round"/>
+        </g>
+      </svg>
+      <div id="board-c1" class="chk"><i></i><span>NO SOBRECOCINAR</span></div>
+      <div id="board-c2" class="chk"><i></i><span class="y" style="color:#ffd23f">DEJAR REPOSAR</span></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#board-cam", { y: 1920 }, { y: 0, duration: 0.4, ease: "expo.out" }, 0);
+      for (let i = 0; i < 5; i++) tl.fromTo("#board-sl" + i, { x: 120 + i * 92, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "expo.out" }, 0.25 + i * 0.22);
+      for (let i = 0; i < 5; i++) tl.fromTo("#board-knife", { y: -120 }, { y: 0, duration: 0.11, ease: "power2.in", immediateRender: i === 0 }, 0.12 + i * 0.22);
+      tl.to("#board-knife", { y: -900, duration: 0.3, ease: "power3.in" }, 1.35);
+      tl.fromTo("#board-c1", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, 0.318);
+      tl.fromTo("#board-c2", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, 1.794);
+      tl.fromTo("#board-clock", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 1.894);
+      tl.fromTo("#board-hand", { rotation: 0, transformOrigin: "0px 0px" }, { rotation: 360, duration: 1.2, ease: "none" }, 2.044);
+      tl.fromTo("#board-cam", { scale: 1 }, { scale: 1.06, duration: 2.636, ease: "power1.out" }, 0.4);
+      window.__timelines["board"] = tl;
+    })();
+  </script>
+</template>

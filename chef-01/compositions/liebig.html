@@ -1,0 +1,65 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Montserrat", sans-serif; }
+
+    .t { position: absolute; left: 0; right: 0; text-align: center; font-family: "Archivo Black", "Montserrat", sans-serif;
+         color: #fff; -webkit-text-stroke: 10px #2a1a12; paint-order: stroke fill; letter-spacing: -0.01em; line-height: 0.98;
+         text-shadow: 0 10px 0 rgba(42,26,18,0.35); }
+    .t span { display: inline-block; }
+    .y { color: #ffd23f; } .r { color: #e63b2e; }
+    #liebig-card { position: absolute; inset: 0; transform-origin: 540px 900px; }
+    #liebig-era { top: 210px; font-size: 92px; }
+    #liebig-sub { top: 318px; font-size: 44px; -webkit-text-stroke: 7px #2a1a12; }
+    #liebig-quote { position: absolute; left: 90px; right: 90px; top: 925px; padding: 22px 30px; background: #fff7e2; border: 8px solid #2a1a12;
+      border-radius: 18px; font: 800 54px/1.1 "Montserrat", sans-serif; color: #2a1a12; text-align: center; box-shadow: 0 12px 0 rgba(42,26,18,0.35); }
+    #liebig-quote b { color: #e63b2e; }
+    #liebig-stamp { position: absolute; left: 0; right: 0; top: 560px; text-align: center; font: 900 220px/1 "Archivo Black", sans-serif; color: #e63b2e;
+      letter-spacing: 0.04em; }
+    #liebig-stamp span { display: inline-block; border: 18px solid #e63b2e; border-radius: 26px; padding: 6px 40px 18px; background: rgba(255,247,226,0.25); }
+  </style>
+  <div id="root" data-composition-id="liebig" data-width="1080" data-height="1920">
+    <div id="liebig-card">
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;inset:0">
+        <rect width="1080" height="1920" fill="#e9d6ac"/>
+        <g stroke="#cdb684" stroke-width="3" opacity="0.6"><path d="M-200 0 l600 1920" /><path d="M-170 0 l600 1920" /><path d="M-140 0 l600 1920" /><path d="M-110 0 l600 1920" /><path d="M-80 0 l600 1920" /><path d="M-50 0 l600 1920" /><path d="M-20 0 l600 1920" /><path d="M10 0 l600 1920" /><path d="M40 0 l600 1920" /><path d="M70 0 l600 1920" /><path d="M100 0 l600 1920" /><path d="M130 0 l600 1920" /><path d="M160 0 l600 1920" /><path d="M190 0 l600 1920" /><path d="M220 0 l600 1920" /><path d="M250 0 l600 1920" /><path d="M280 0 l600 1920" /><path d="M310 0 l600 1920" /><path d="M340 0 l600 1920" /><path d="M370 0 l600 1920" /><path d="M400 0 l600 1920" /><path d="M430 0 l600 1920" /><path d="M460 0 l600 1920" /><path d="M490 0 l600 1920" /><path d="M520 0 l600 1920" /><path d="M550 0 l600 1920" /><path d="M580 0 l600 1920" /><path d="M610 0 l600 1920" /><path d="M640 0 l600 1920" /><path d="M670 0 l600 1920" /><path d="M700 0 l600 1920" /><path d="M730 0 l600 1920" /><path d="M760 0 l600 1920" /><path d="M790 0 l600 1920" /><path d="M820 0 l600 1920" /><path d="M850 0 l600 1920" /><path d="M880 0 l600 1920" /><path d="M910 0 l600 1920" /><path d="M940 0 l600 1920" /><path d="M970 0 l600 1920" /><path d="M1000 0 l600 1920" /><path d="M1030 0 l600 1920" /><path d="M1060 0 l600 1920" /><path d="M1090 0 l600 1920" /><path d="M1120 0 l600 1920" /><path d="M1150 0 l600 1920" /><path d="M1180 0 l600 1920" /><path d="M1210 0 l600 1920" /><path d="M1240 0 l600 1920" /><path d="M1270 0 l600 1920" /><path d="M1300 0 l600 1920" /><path d="M1330 0 l600 1920" /><path d="M1360 0 l600 1920" /><path d="M1390 0 l600 1920" /><path d="M1420 0 l600 1920" /><path d="M1450 0 l600 1920" /><path d="M1480 0 l600 1920" /><path d="M1510 0 l600 1920" /><path d="M1540 0 l600 1920" /><path d="M1570 0 l600 1920" /></g>
+        <rect x="70" y="440" width="940" height="520" rx="20" fill="#f3e4c0" stroke="#2a1a12" stroke-width="8"/>
+        <!-- grabado: silueta de un químico con su matraz y un mechero -->
+        <g id="liebig-sci" fill="#3b2a1a" stroke="#2a1a12" stroke-width="6" stroke-linejoin="round">
+          <path d="M260 960 Q270 760 360 730 L470 730 Q560 760 570 960 Z"/>
+          <path d="M365 735 L415 800 L465 735" fill="#f3e4c0"/>
+          <ellipse cx="415" cy="640" rx="78" ry="92"/>
+          <path d="M338 650 Q330 720 380 735 L380 700 Z M492 650 Q500 720 450 735 L450 700 Z" fill="#2a1d12"/>
+          <path d="M345 590 Q415 520 488 592 Q470 560 415 556 Q360 560 345 590 Z" fill="#2a1d12"/>
+        </g>
+        <g stroke="#2a1a12" stroke-width="7" stroke-linejoin="round">
+          <path d="M700 560 h60 v90 l90 170 q12 30 -20 30 h-200 q-32 0 -20 -30 l90 -170 z" fill="#f3e4c0"/>
+          <path d="M650 760 h200 l-20 40 q-6 10 -18 10 h-130 q-12 0 -18 -10 z" fill="#c2414b"/>
+          <rect x="660" y="880" width="180" height="40" rx="8" fill="#6b5a40"/>
+          <path id="liebig-flame" d="M750 880 q-30 -40 0 -80 q30 40 0 80 z" fill="#e8a33a"/>
+        </g>
+        <g id="liebig-bub" fill="#f3e4c0" stroke="#2a1a12" stroke-width="4">
+          <circle cx="740" cy="740" r="10"/><circle cx="770" cy="710" r="7"/><circle cx="745" cy="680" r="5"/>
+        </g>
+      </svg>
+      <div id="liebig-era" class="t">SIGLO <span class="y">XIX</span></div>
+      <div id="liebig-sub" class="t">UN QUÍMICO ALEMÁN DIJO…</div>
+      <div id="liebig-quote">«Dorar la carne<br><b>cierra los poros</b>»</div>
+      <div id="liebig-stamp"><span>MITO</span></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#liebig-card", { x: 1080, rotation: 6 }, { x: 0, rotation: 0, duration: 0.5, ease: "expo.out" }, 0);
+      tl.fromTo("#liebig-sci", { scale: 1, transformOrigin: "415px 760px" }, { scale: 1.06, duration: 7.128, ease: "none" }, 0);
+      tl.fromTo("#liebig-flame", { scaleY: 0.85, transformOrigin: "750px 880px" }, { scaleY: 1.12, duration: 0.25, ease: "sine.inOut", repeat: 27, yoyo: true }, 0);
+      tl.fromTo("#liebig-bub", { y: 0, opacity: 1 }, { y: -60, opacity: 0, duration: 0.9, ease: "power1.out", repeat: 6 }, 0);
+      tl.fromTo("#liebig-era", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0.25);
+      tl.fromTo("#liebig-sub", { opacity: 0 }, { opacity: 1, duration: 0.16 }, 1.914);
+      tl.fromTo("#liebig-quote", { opacity: 0, y: 40, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "expo.out" }, 3.634);
+      tl.fromTo("#liebig-stamp", { opacity: 0, scale: 2.4, rotation: -14 }, { opacity: 1, scale: 1, rotation: -12, duration: 0.22, ease: "power4.in" }, 5.898);
+      [[10,-6],[-8,6],[5,-3],[0,0]].forEach(([x,y],i)=>tl.to("#liebig-card",{x,y,duration:0.04,ease:"none"},6.118+i*0.04));
+      window.__timelines["liebig"] = tl;
+    })();
+  </script>
+</template>

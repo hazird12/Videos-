@@ -1,0 +1,59 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Montserrat", sans-serif; }
+
+    .t { position: absolute; left: 0; right: 0; text-align: center; font-family: "Archivo Black", "Montserrat", sans-serif;
+         color: #fff; -webkit-text-stroke: 10px #2a1a12; paint-order: stroke fill; letter-spacing: -0.01em; line-height: 0.98;
+         text-shadow: 0 10px 0 rgba(42,26,18,0.35); }
+    .t span { display: inline-block; }
+    .y { color: #ffd23f; } .r { color: #e63b2e; }
+    #car-world { position: absolute; inset: 0; }
+    #car-t1 { top: 230px; font-size: 92px; }
+    #car-t2 { top: 360px; font-size: 92px; }
+    #car-bam { position: absolute; left: 650px; top: 760px; font: 900 110px/1 "Archivo Black", sans-serif; color: #ffd23f; -webkit-text-stroke: 9px #2a1a12; paint-order: stroke fill; }
+  </style>
+  <div id="root" data-composition-id="car" data-width="1080" data-height="1920">
+    <div id="car-world">
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;inset:0">
+        <rect width="1080" height="1920" fill="#bfe3ea"/>
+        <rect y="1180" width="1080" height="740" fill="#9a9a9a"/>
+        <path d="M0 1190 H1080" stroke="#2a1a12" stroke-width="8"/>
+        <path d="M60 1420 h160 M380 1420 h160 M700 1420 h160" stroke="#f3eee5" stroke-width="18"/>
+        <g id="car-car" stroke="#2a1a12" stroke-width="10" stroke-linejoin="round">
+          <path d="M110 1130 Q110 990 210 980 L330 980 L430 820 Q450 800 480 800 L760 800 Q800 800 820 830 L920 980 Q990 990 990 1060 L990 1130 Z" fill="#d9452f"/>
+          <path d="M455 830 L540 830 L540 975 L360 975 Z" fill="#bfe3ea"/>
+          <path d="M580 830 L760 830 Q780 830 790 845 L880 975 L580 975 Z" fill="#bfe3ea"/>
+          <path d="M540 830 v300" />
+          <g id="car-door"><path d="M545 830 L760 830 Q780 830 790 845 L880 975 L885 1125 L545 1125 Z" fill="#e8604a" stroke-width="9"/>
+            <path d="M580 840 L760 840 Q775 842 783 852 L866 970 L580 970 Z" fill="#cfeef3" stroke-width="7" opacity="0.001"/>
+            <rect x="590" y="1010" width="70" height="18" rx="9" fill="#2a1a12"/></g>
+          <circle cx="290" cy="1140" r="80" fill="#2e2e33"/><circle cx="290" cy="1140" r="34" fill="#b9c0c6"/>
+          <circle cx="810" cy="1140" r="80" fill="#2e2e33"/><circle cx="810" cy="1140" r="34" fill="#b9c0c6"/>
+          <rect x="960" y="1040" width="40" height="30" rx="8" fill="#ffd23f"/>
+        </g>
+        <g><path id="car-j0" d="M0 -18 Q14 0 0 14 Q-14 0 0 -18 Z" transform="translate(460 900)" fill="#a3362a" stroke="#2a1a12" stroke-width="4" opacity="0"/><path id="car-j1" d="M0 -18 Q14 0 0 14 Q-14 0 0 -18 Z" transform="translate(690 900)" fill="#a3362a" stroke="#2a1a12" stroke-width="4" opacity="0"/><path id="car-j2" d="M0 -18 Q14 0 0 14 Q-14 0 0 -18 Z" transform="translate(460 900)" fill="#a3362a" stroke="#2a1a12" stroke-width="4" opacity="0"/><path id="car-j3" d="M0 -18 Q14 0 0 14 Q-14 0 0 -18 Z" transform="translate(690 900)" fill="#a3362a" stroke="#2a1a12" stroke-width="4" opacity="0"/><path id="car-j4" d="M0 -18 Q14 0 0 14 Q-14 0 0 -18 Z" transform="translate(460 900)" fill="#a3362a" stroke="#2a1a12" stroke-width="4" opacity="0"/><path id="car-j5" d="M0 -18 Q14 0 0 14 Q-14 0 0 -18 Z" transform="translate(690 900)" fill="#a3362a" stroke="#2a1a12" stroke-width="4" opacity="0"/><path id="car-j6" d="M0 -18 Q14 0 0 14 Q-14 0 0 -18 Z" transform="translate(460 900)" fill="#a3362a" stroke="#2a1a12" stroke-width="4" opacity="0"/><path id="car-j7" d="M0 -18 Q14 0 0 14 Q-14 0 0 -18 Z" transform="translate(690 900)" fill="#a3362a" stroke="#2a1a12" stroke-width="4" opacity="0"/><path id="car-j8" d="M0 -18 Q14 0 0 14 Q-14 0 0 -18 Z" transform="translate(460 900)" fill="#a3362a" stroke="#2a1a12" stroke-width="4" opacity="0"/><path id="car-j9" d="M0 -18 Q14 0 0 14 Q-14 0 0 -18 Z" transform="translate(690 900)" fill="#a3362a" stroke="#2a1a12" stroke-width="4" opacity="0"/><path id="car-j10" d="M0 -18 Q14 0 0 14 Q-14 0 0 -18 Z" transform="translate(460 900)" fill="#a3362a" stroke="#2a1a12" stroke-width="4" opacity="0"/><path id="car-j11" d="M0 -18 Q14 0 0 14 Q-14 0 0 -18 Z" transform="translate(690 900)" fill="#a3362a" stroke="#2a1a12" stroke-width="4" opacity="0"/></g>
+      </svg>
+      <div id="car-t1" class="t">PUERTA CERRADA…</div>
+      <div id="car-t2" class="t"><span class="y">VENTANAS</span> ABIERTAS</div>
+      <div id="car-bam">¡PUM!</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#car-world", { clipPath: "circle(0% at 540px 960px)" }, { clipPath: "circle(120% at 540px 960px)", duration: 0.35, ease: "power2.out" }, 0);
+      tl.fromTo("#car-door", { scaleX: 0.35, transformOrigin: "545px 980px" }, { scaleX: 1, duration: 0.28, ease: "power4.in" }, 0.15);
+      tl.fromTo("#car-bam", { opacity: 0, scale: 2, rotation: -10 }, { opacity: 1, scale: 1, rotation: -8, duration: 0.16, ease: "power4.out" }, 0.43);
+      tl.to("#car-bam", { opacity: 0, duration: 0.15 }, 1.0);
+      [[0,-14],[0,8],[0,-5],[0,0]].forEach(([x,y],i)=>tl.to("#car-car",{y,duration:0.05,ease:"none"},0.43+i*0.05));
+      tl.fromTo("#car-t1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, 0.45);
+      tl.fromTo("#car-t2", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, 1.286);
+      [{"win":0,"dx":-107.1585382129997,"dy":-363.90812823548913,"t":2.163170639468823},{"win":1,"dx":130.76177041511983,"dy":-271.6826529428363,"t":1.771258939669002},{"win":0,"dx":-54.622154630720615,"dy":-384.9389051133767,"t":2.2240978000443428},{"win":1,"dx":265.98599538207054,"dy":-250.49326587002724,"t":2.1443314611343665},{"win":0,"dx":-98.39672906138003,"dy":-272.8080909512937,"t":2.1336201876602137},{"win":1,"dx":130.45667393598706,"dy":-337.06675982568413,"t":2.173521472426597},{"win":0,"dx":-122.32420997135341,"dy":-242.39003360271454,"t":2.289321699691005},{"win":1,"dx":303.3026788616553,"dy":-349.91334474179894,"t":2.215706941652112},{"win":0,"dx":-132.21505436114967,"dy":-324.10196516662836,"t":2.0517424222677945},{"win":1,"dx":127.69333216361701,"dy":-218.0548931332305,"t":1.6100910179773347},{"win":0,"dx":-109.8811758235097,"dy":-241.34910481981933,"t":1.7051924355970698},{"win":1,"dx":268.2153977500275,"dy":-322.86679974757135,"t":2.3895841065389103}].forEach((d, i) => {
+        tl.fromTo("#car-j" + i, { opacity: 1, x: 0, y: 0 }, { x: d.dx, y: d.dy, duration: 0.35, ease: "power2.out" }, d.t);
+        tl.to("#car-j" + i, { y: d.dy + 500, duration: 0.45, ease: "power2.in" }, d.t + 0.35);
+        tl.set("#car-j" + i, { opacity: 0 }, d.t + 0.8);
+      });
+      window.__timelines["car"] = tl;
+    })();
+  </script>
+</template>

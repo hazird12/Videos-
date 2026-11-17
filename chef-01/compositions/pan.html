@@ -1,0 +1,53 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Montserrat", sans-serif; }
+
+    #pan-cam { position: absolute; inset: 0; transform-origin: 540px 1000px; }
+  </style>
+  <div id="root" data-composition-id="pan" data-width="1080" data-height="1920">
+    <div id="pan-cam">
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;inset:0">
+        <rect width="1080" height="1920" fill="#8e969c"/>
+        <g stroke="#6f777d" stroke-width="10" opacity="0.6">
+          <path d="M0 520 H1080 M0 1480 H1080 M140 0 V1920 M940 0 V1920"/>
+        </g>
+        <g id="pan-panwrap">
+          <rect x="840" y="1180" width="420" height="96" rx="40" fill="#2f2f33" stroke="#2a1a12" stroke-width="10" transform="rotate(32 860 1220)"/>
+          <circle cx="540" cy="1000" r="440" fill="#3a3a3f" stroke="#2a1a12" stroke-width="12"/>
+          <circle cx="540" cy="1000" r="392" fill="#232327"/>
+          <ellipse cx="470" cy="900" rx="230" ry="120" fill="#4a4a52" opacity="0.5"/>
+          
+          <g id="pan-steak">
+            <path d="M330 860 Q360 760 520 770 Q690 760 750 860 Q800 980 730 1090 Q640 1200 500 1180 Q360 1170 320 1060 Q290 960 330 860 Z" fill="#f1e2d4" stroke="#2a1a12" stroke-width="10"/>
+            <path d="M360 880 Q390 800 520 805 Q660 800 715 880 Q760 980 700 1070 Q620 1160 505 1145 Q385 1135 352 1050 Q330 960 360 880 Z" fill="#c2414b"/>
+            <path d="M420 900 q60 30 120 -10 q50 40 110 20 M400 990 q90 40 170 -20 q40 30 90 10 M450 1080 q60 -30 140 10" stroke="#f3d3c8" stroke-width="12" fill="none" stroke-linecap="round"/>
+          </g>
+        </g>
+      </svg>
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;inset:0;overflow:visible">
+        <g id="pan-drops"><circle id="pan-d0" cx="503" cy="852" r="9.6" fill="#f7e7b0" stroke="#2a1a12" stroke-width="3"/><circle id="pan-d1" cx="718" cy="1039" r="9.8" fill="#f7e7b0" stroke="#2a1a12" stroke-width="3"/><circle id="pan-d2" cx="341" cy="991" r="8.1" fill="#f7e7b0" stroke="#2a1a12" stroke-width="3"/><circle id="pan-d3" cx="351" cy="938" r="6.7" fill="#f7e7b0" stroke="#2a1a12" stroke-width="3"/><circle id="pan-d4" cx="495" cy="853" r="12.3" fill="#f7e7b0" stroke="#2a1a12" stroke-width="3"/><circle id="pan-d5" cx="686" cy="891" r="11.5" fill="#f7e7b0" stroke="#2a1a12" stroke-width="3"/><circle id="pan-d6" cx="494" cy="1107" r="10.2" fill="#f7e7b0" stroke="#2a1a12" stroke-width="3"/><circle id="pan-d7" cx="638" cy="867" r="6.1" fill="#f7e7b0" stroke="#2a1a12" stroke-width="3"/><circle id="pan-d8" cx="683" cy="889" r="13.5" fill="#f7e7b0" stroke="#2a1a12" stroke-width="3"/><circle id="pan-d9" cx="564" cy="851" r="11.7" fill="#f7e7b0" stroke="#2a1a12" stroke-width="3"/><circle id="pan-d10" cx="653" cy="1087" r="11.8" fill="#f7e7b0" stroke="#2a1a12" stroke-width="3"/><circle id="pan-d11" cx="740" cy="981" r="9.8" fill="#f7e7b0" stroke="#2a1a12" stroke-width="3"/><circle id="pan-d12" cx="670" cy="881" r="11.5" fill="#f7e7b0" stroke="#2a1a12" stroke-width="3"/><circle id="pan-d13" cx="585" cy="853" r="10.7" fill="#f7e7b0" stroke="#2a1a12" stroke-width="3"/><circle id="pan-d14" cx="720" cy="1036" r="10.2" fill="#f7e7b0" stroke="#2a1a12" stroke-width="3"/><circle id="pan-d15" cx="646" cy="870" r="9.7" fill="#f7e7b0" stroke="#2a1a12" stroke-width="3"/></g>
+        <g id="pan-steam" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round"><path id="pan-s0" d="M0 0 q-30 -60 0 -120 q30 -60 0 -120" transform="translate(380 860)" opacity="0"/><path id="pan-s1" d="M0 0 q-30 -60 0 -120 q30 -60 0 -120" transform="translate(460 860)" opacity="0"/><path id="pan-s2" d="M0 0 q-30 -60 0 -120 q30 -60 0 -120" transform="translate(540 860)" opacity="0"/><path id="pan-s3" d="M0 0 q-30 -60 0 -120 q30 -60 0 -120" transform="translate(620 860)" opacity="0"/><path id="pan-s4" d="M0 0 q-30 -60 0 -120 q30 -60 0 -120" transform="translate(700 860)" opacity="0"/></g>
+      </svg>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const land = 0.42;
+      tl.fromTo("#pan-steak", { y: -520, scale: 1.25, rotation: -14, transformOrigin: "540px 980px" }, { y: 0, scale: 1, rotation: 0, duration: land, ease: "power3.in" }, 0);
+      tl.fromTo("#pan-steak", { scaleY: 0.86, scaleX: 1.08 }, { scaleY: 1, scaleX: 1, duration: 0.3, ease: "back.out(3)" }, land);
+      // sacudida de cámara al caer
+      [[14,-10],[-12,8],[9,6],[-6,-5],[3,3],[0,0]].forEach(([x,y],i)=>tl.to("#pan-cam",{x,y,duration:0.045,ease:"none"},land+i*0.045));
+      tl.fromTo("#pan-cam", { scale: 1.0 }, { scale: 1.12, duration: 1.152, ease: "power2.out" }, land);
+      [{"x":502.80371205992554,"y":852.2680765075938,"dx":-72.54246259746108,"dy":-388.27291551095743,"r":9.649537540972233},{"x":718.2423571936799,"y":1038.9663653120333,"dx":515.4603216736625,"dy":63.642571549563996,"r":9.849443342536688},{"x":340.6948287786054,"y":990.826914891301,"dx":-420.6018218382777,"dy":-95.39394510373961,"r":8.106050146743655},{"x":350.8266165671409,"y":937.8078846496353,"dx":-407.36428541664776,"dy":-217.845059673791,"r":6.6687430534511805},{"x":494.8855213775075,"y":853.3505668651958,"dx":-113.67704736247816,"dy":-463.67249491463735,"r":12.349856464192271},{"x":685.5985873179258,"y":890.8739981584622,"dx":337.892209132082,"dy":-342.74610833131203,"r":11.5246511567384},{"x":494.23146463449484,"y":1106.5502445455352,"dx":-126.95196477142981,"dy":258.02461858741896,"r":10.211428619921207},{"x":638.2542922884926,"y":866.7691529007667,"dx":255.65091360718637,"dy":-437.2818703330691,"r":6.092847608029842},{"x":683.4978414923478,"y":889.44594924426,"dx":330.5495903742732,"dy":-344.6383086905292,"r":13.494574466720223},{"x":564.2800528153755,"y":850.961527471816,"dx":59.40732511845116,"dy":-460.0120181585691,"r":11.717472650110722},{"x":653.1100032568572,"y":1087.2128197860045,"dx":269.00955149569495,"dy":154.59845370867163,"r":11.78159456513822},{"x":739.9918070485828,"y":981.1766819576358,"dx":382.15685749708575,"dy":-117.57856268762005,"r":9.826473567634821},{"x":670.4387443569123,"y":881.4531958784296,"dx":350.0797333231139,"dy":-404.83121865443843,"r":11.456517925485969},{"x":585.2369924427969,"y":853.3690317004819,"dx":120.31539044373629,"dy":-482.70377233491223,"r":10.65416113846004},{"x":720.4707098027686,"y":1036.0295585083254,"dx":430.23923201424356,"dy":23.848443494022547,"r":10.247446009889245},{"x":645.59104043042,"y":869.5946113344233,"dx":257.31283226249826,"dy":-409.74058342516446,"r":9.71172995492816}].forEach((d, i) => {
+        tl.fromTo("#pan-d" + i, { x: 0, y: 0, opacity: 0, scale: 0.4 }, { x: d.dx, y: d.dy, opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, land + i * 0.008);
+        tl.to("#pan-d" + i, { opacity: 0, duration: 0.2 }, land + 0.45 + i * 0.01);
+      });
+      for (let i = 0; i < 5; i++) {
+        tl.fromTo("#pan-s" + i, { opacity: 0, y: 0 }, { opacity: 0.75, y: -120, duration: 0.6, ease: "power1.out" }, land + 0.1 + i * 0.09);
+        tl.to("#pan-s" + i, { opacity: 0, y: -220, duration: 0.5, ease: "power1.in" }, land + 0.7 + i * 0.09);
+      }
+      window.__timelines["pan"] = tl;
+    })();
+  </script>
+</template>

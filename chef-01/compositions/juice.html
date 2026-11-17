@@ -1,0 +1,74 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Montserrat", sans-serif; }
+
+    .t { position: absolute; left: 0; right: 0; text-align: center; font-family: "Archivo Black", "Montserrat", sans-serif;
+         color: #fff; -webkit-text-stroke: 10px #2a1a12; paint-order: stroke fill; letter-spacing: -0.01em; line-height: 0.98;
+         text-shadow: 0 10px 0 rgba(42,26,18,0.35); }
+    .t span { display: inline-block; }
+    .y { color: #ffd23f; } .r { color: #e63b2e; }
+    #juice-cam { position: absolute; inset: 0; transform-origin: 540px 760px; }
+    #juice-lbl { top: 260px; font-size: 104px; }
+    #juice-q { top: 260px; font-size: 96px; }
+  </style>
+  <div id="root" data-composition-id="juice" data-width="1080" data-height="1920">
+    <div id="juice-cam">
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;inset:0">
+        <rect width="1080" height="1920" fill="#8e969c"/>
+        <rect y="870" width="1080" height="1050" fill="#5f666b"/>
+        <g transform="translate(0 -260)">
+        <!-- llama de la cocina -->
+        <g id="juice-fire" fill="#3d7fd6" stroke="#2a1a12" stroke-width="5">
+          <path d="M280 1160 q-22 -40 0 -70 q22 30 0 70 z"/><path d="M400 1160 q-22 -40 0 -70 q22 30 0 70 z"/><path d="M520 1160 q-22 -40 0 -70 q22 30 0 70 z"/><path d="M640 1160 q-22 -40 0 -70 q22 30 0 70 z"/><path d="M760 1160 q-22 -40 0 -70 q22 30 0 70 z"/>
+        </g>
+        <!-- sartén de perfil -->
+        <path d="M120 1000 L960 1000 L900 1100 L180 1100 Z" fill="#2e2e33" stroke="#2a1a12" stroke-width="12" stroke-linejoin="round"/>
+        <rect x="940" y="985" width="260" height="56" rx="24" fill="#2e2e33" stroke="#2a1a12" stroke-width="10"/>
+        <!-- charco de jugo que crece -->
+        <ellipse id="juice-pool" cx="540" cy="1004" rx="400" ry="14" fill="#8c2f22" stroke="#2a1a12" stroke-width="5"/>
+        <!-- bistec de perfil: abajo dorado, arriba crudo -->
+        <path d="M250 1000 Q250 860 360 850 L720 850 Q830 860 830 1000 Z" fill="#c2414b" stroke="#2a1a12" stroke-width="10"/>
+        <path d="M252 1000 Q254 960 262 940 L818 940 Q826 960 828 1000 Z" fill="#7a4423"/>
+        <path d="M300 900 q80 18 160 -6 q90 -20 200 4" stroke="#f3d3c8" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <g id="juice-beads"><ellipse id="juice-b0" cx="309" cy="918" rx="9.0" ry="11.3" fill="#a3362a" stroke="#2a1a12" stroke-width="3" opacity="0"/><ellipse id="juice-b1" cx="370" cy="936" rx="12.8" ry="16.0" fill="#a3362a" stroke="#2a1a12" stroke-width="3" opacity="0"/><ellipse id="juice-b2" cx="429" cy="931" rx="8.4" ry="10.5" fill="#a3362a" stroke="#2a1a12" stroke-width="3" opacity="0"/><ellipse id="juice-b3" cx="492" cy="914" rx="7.8" ry="9.8" fill="#a3362a" stroke="#2a1a12" stroke-width="3" opacity="0"/><ellipse id="juice-b4" cx="544" cy="922" rx="12.5" ry="15.6" fill="#a3362a" stroke="#2a1a12" stroke-width="3" opacity="0"/><ellipse id="juice-b5" cx="610" cy="909" rx="10.7" ry="13.4" fill="#a3362a" stroke="#2a1a12" stroke-width="3" opacity="0"/><ellipse id="juice-b6" cx="662" cy="927" rx="12.3" ry="15.4" fill="#a3362a" stroke="#2a1a12" stroke-width="3" opacity="0"/><ellipse id="juice-b7" cx="733" cy="924" rx="8.4" ry="10.5" fill="#a3362a" stroke="#2a1a12" stroke-width="3" opacity="0"/><ellipse id="juice-b8" cx="788" cy="912" rx="11.3" ry="14.1" fill="#a3362a" stroke="#2a1a12" stroke-width="3" opacity="0"/></g>
+        <g><circle id="juice-u0" cx="231" cy="1034" r="13.8" fill="none" stroke="#f7e7b0" stroke-width="4" opacity="0"/><circle id="juice-u1" cx="225" cy="1032" r="17.2" fill="none" stroke="#f7e7b0" stroke-width="4" opacity="0"/><circle id="juice-u2" cx="251" cy="1018" r="12.7" fill="none" stroke="#f7e7b0" stroke-width="4" opacity="0"/><circle id="juice-u3" cx="208" cy="1029" r="11.9" fill="none" stroke="#f7e7b0" stroke-width="4" opacity="0"/><circle id="juice-u4" cx="222" cy="1019" r="14.6" fill="none" stroke="#f7e7b0" stroke-width="4" opacity="0"/><circle id="juice-u5" cx="203" cy="1015" r="9.2" fill="none" stroke="#f7e7b0" stroke-width="4" opacity="0"/><circle id="juice-u6" cx="248" cy="1030" r="10.7" fill="none" stroke="#f7e7b0" stroke-width="4" opacity="0"/><circle id="juice-u7" cx="817" cy="1033" r="17.7" fill="none" stroke="#f7e7b0" stroke-width="4" opacity="0"/><circle id="juice-u8" cx="820" cy="1015" r="8.9" fill="none" stroke="#f7e7b0" stroke-width="4" opacity="0"/><circle id="juice-u9" cx="866" cy="1029" r="12.1" fill="none" stroke="#f7e7b0" stroke-width="4" opacity="0"/><circle id="juice-u10" cx="818" cy="1024" r="15.9" fill="none" stroke="#f7e7b0" stroke-width="4" opacity="0"/><circle id="juice-u11" cx="830" cy="1018" r="13.6" fill="none" stroke="#f7e7b0" stroke-width="4" opacity="0"/><circle id="juice-u12" cx="804" cy="1026" r="17.1" fill="none" stroke="#f7e7b0" stroke-width="4" opacity="0"/><circle id="juice-u13" cx="833" cy="1030" r="11.4" fill="none" stroke="#f7e7b0" stroke-width="4" opacity="0"/></g>
+        <g fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round">
+          <path id="juice-s0" d="M330 840 q-26 -50 0 -100 q26 -50 0 -100" opacity="0"/><path id="juice-s1" d="M470 840 q-26 -50 0 -100 q26 -50 0 -100" opacity="0"/><path id="juice-s2" d="M610 840 q-26 -50 0 -100 q26 -50 0 -100" opacity="0"/><path id="juice-s3" d="M750 840 q-26 -50 0 -100 q26 -50 0 -100" opacity="0"/>
+        </g>
+        <!-- flecha -->
+        <g id="juice-arrow" stroke="#2a1a12" stroke-width="9" stroke-linejoin="round">
+          <path d="M840 560 Q960 700 880 900 L920 905 L850 990 L815 880 L850 892 Q910 720 800 600 Z" fill="#ffd23f"/>
+        </g>
+        </g>
+      </svg>
+    </div>
+      <div id="juice-q" class="t">¿“SELLADA”?</div>
+      <div id="juice-lbl" class="t"><span class="y">JUGO</span><br>SALIENDO</div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#juice-cam", { scale: 1.14, filter: "blur(8px)" }, { scale: 1.24, filter: "blur(0px)", duration: 5.756, ease: "expo.out" }, 0);
+      tl.fromTo("#juice-fire", { scaleY: 0.9, transformOrigin: "540px 1160px" }, { scaleY: 1.1, duration: 0.2, ease: "sine.inOut", repeat: 27, yoyo: true }, 0);
+      tl.fromTo("#juice-q", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 0.3);
+      tl.to("#juice-q", { opacity: 0, filter: "blur(6px)", duration: 0.15 }, 3.852);
+      tl.fromTo("#juice-pool", { attr: { rx: 330, ry: 6 } }, { attr: { rx: 430, ry: 22 }, duration: 2.764, ease: "power2.out" }, 0.2);
+      [{"x":308.6458244314417,"y":917.8811623807997,"r":11.266272250562906,"d":0.8882950730621815},{"x":369.5341801503673,"y":935.6795635260642,"r":15.960671423003078,"d":0.8224398118443788},{"x":428.8568821782246,"y":931.0529507044703,"r":10.510870821774006,"d":0.8123743233736604},{"x":492.2650669841096,"y":913.6031580530107,"r":9.775585748255253,"d":1.8489040692336858},{"x":544.128155936487,"y":922.1732110530138,"r":15.5865467954427,"d":0.29271707697771493},{"x":609.77354478091,"y":909.2395068146288,"r":13.397385040298104,"d":1.0382552882190794},{"x":661.9564800290391,"y":926.7520757578313,"r":15.436248449608684,"d":1.8170173448510467},{"x":732.9768417868763,"y":923.5637635271996,"r":10.46810869127512,"d":0.7987147481646388},{"x":787.6346449879929,"y":912.4595597200096,"r":14.084715966135263,"d":0.9655292288400232}].forEach((b, i) => {
+        tl.fromTo("#juice-b" + i, { opacity: 0, y: 0, scale: 0.3 }, { opacity: 1, y: 0, scale: 1, duration: 0.25, ease: "back.out(2)" }, b.d);
+        tl.to("#juice-b" + i, { y: 95, scaleY: 0.6, duration: 0.6, ease: "power2.in" }, b.d + 0.35);
+        tl.to("#juice-b" + i, { opacity: 0, duration: 0.1 }, b.d + 0.92);
+      });
+      [{"x":231.0903749242425,"y":1033.5455865226686,"r":13.819234754890203,"t":3.884260958465748},{"x":225.15277104452252,"y":1032.2951852809638,"r":17.21454760245979,"t":4.098044391754084},{"x":251.23572073876858,"y":1017.5552649749443,"r":12.714219749439508,"t":0.3074817962413654},{"x":208.12239181250334,"y":1029.4837750913575,"r":11.920623210724443,"t":4.04964656837564},{"x":222.38807883113623,"y":1019.2897384706885,"r":14.588032334111631,"t":4.340654754354619},{"x":202.81436437740922,"y":1015.4931847099215,"r":9.213914598338306,"t":1.0859392256205902},{"x":248.15836237743497,"y":1030.0373257603496,"r":10.73016496328637,"t":5.005076834117994},{"x":817.1487576700747,"y":1033.023896375671,"r":17.710943757090718,"t":1.3171688146218659},{"x":819.6219392120838,"y":1015.1971367606893,"r":8.864199257921427,"t":3.911956417471171},{"x":865.7099470496178,"y":1029.4381269533187,"r":12.108369231689721,"t":1.6305833789268511},{"x":817.9472036659718,"y":1024.3960142880678,"r":15.862460443284363,"t":1.2871456349818038},{"x":830.3200794942677,"y":1018.2368393242359,"r":13.578458430245519,"t":2.043970183160156},{"x":804.2361441254616,"y":1026.1405828176066,"r":17.093077504076064,"t":1.8549832351068036},{"x":833.223602604121,"y":1029.6627232199535,"r":11.364471113309264,"t":1.0155105696478859}].forEach((b, i) => {
+        tl.fromTo("#juice-u" + i, { opacity: 0, scale: 0.2 }, { opacity: 1, scale: 1, duration: 0.18, ease: "power2.out" }, b.t);
+        tl.to("#juice-u" + i, { opacity: 0, scale: 1.5, duration: 0.1 }, b.t + 0.3);
+      });
+      for (let i = 0; i < 4; i++) {
+        tl.fromTo("#juice-s" + i, { opacity: 0, y: 0 }, { opacity: 0.8, y: -80, duration: 0.7, ease: "power1.out" }, 0.2 + i * 0.25);
+        tl.to("#juice-s" + i, { opacity: 0, y: -160, duration: 0.6 }, 0.9 + i * 0.25);
+      }
+      tl.fromTo("#juice-arrow", { opacity: 0, x: 60, y: -60 }, { opacity: 1, x: 0, y: 0, duration: 0.35, ease: "expo.out" }, 4.002);
+      tl.fromTo("#juice-lbl span, #juice-lbl", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.out" }, 4.252);
+      window.__timelines["juice"] = tl;
+    })();
+  </script>
+</template>

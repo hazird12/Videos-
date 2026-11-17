@@ -1,0 +1,90 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Montserrat", sans-serif; }
+
+    .t { position: absolute; left: 0; right: 0; text-align: center; font-family: "Archivo Black", "Montserrat", sans-serif;
+         color: #fff; -webkit-text-stroke: 10px #2a1a12; paint-order: stroke fill; letter-spacing: -0.01em; line-height: 0.98;
+         text-shadow: 0 10px 0 rgba(42,26,18,0.35); }
+    .t span { display: inline-block; }
+    .y { color: #ffd23f; } .r { color: #e63b2e; }
+    #mai-cam { position: absolute; inset: 0; transform-origin: 540px 980px; }
+    #mai-q { top: 230px; font-size: 84px; }
+    #mai-sabor { top: 230px; font-size: 150px; }
+    #mai-name { top: 230px; font-size: 96px; }
+    #mai-eq { top: 445px; font-size: 54px; -webkit-text-stroke: 8px #2a1a12; }
+  </style>
+  <div id="root" data-composition-id="maillard" data-width="1080" data-height="1920">
+    <div id="mai-cam">
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;inset:0">
+        <rect width="1080" height="1920" fill="#8e969c"/>
+        <g stroke="#6f777d" stroke-width="10" opacity="0.6">
+          <path d="M0 520 H1080 M0 1480 H1080 M140 0 V1920 M940 0 V1920"/>
+        </g>
+        <g id="mai-panwrap">
+          <rect x="840" y="1180" width="420" height="96" rx="40" fill="#2f2f33" stroke="#2a1a12" stroke-width="10" transform="rotate(32 860 1220)"/>
+          <circle cx="540" cy="1000" r="440" fill="#3a3a3f" stroke="#2a1a12" stroke-width="12"/>
+          <circle cx="540" cy="1000" r="392" fill="#232327"/>
+          <ellipse cx="470" cy="900" rx="230" ry="120" fill="#4a4a52" opacity="0.5"/>
+          
+          <g id="mai-raw">
+            <path d="M330 860 Q360 760 520 770 Q690 760 750 860 Q800 980 730 1090 Q640 1200 500 1180 Q360 1170 320 1060 Q290 960 330 860 Z" fill="#f1e2d4" stroke="#2a1a12" stroke-width="10"/>
+            <path d="M360 880 Q390 800 520 805 Q660 800 715 880 Q760 980 700 1070 Q620 1160 505 1145 Q385 1135 352 1050 Q330 960 360 880 Z" fill="#c2414b"/>
+            <path d="M420 900 q60 30 120 -10 q50 40 110 20 M400 990 q90 40 170 -20 q40 30 90 10 M450 1080 q60 -30 140 10" stroke="#f3d3c8" stroke-width="12" fill="none" stroke-linecap="round"/>
+          </g>
+          <g id="mai-sear">
+            <path d="M330 860 Q360 760 520 770 Q690 760 750 860 Q800 980 730 1090 Q640 1200 500 1180 Q360 1170 320 1060 Q290 960 330 860 Z" fill="#c98a4a" stroke="#2a1a12" stroke-width="10"/>
+            <path d="M360 880 Q390 800 520 805 Q660 800 715 880 Q760 980 700 1070 Q620 1160 505 1145 Q385 1135 352 1050 Q330 960 360 880 Z" fill="#7a4423"/>
+            <g fill="#a8622f">
+              <ellipse cx="450" cy="900" rx="60" ry="26"/><ellipse cx="610" cy="940" rx="70" ry="30"/><ellipse cx="500" cy="1040" rx="80" ry="34"/>
+              <ellipse cx="650" cy="1060" rx="40" ry="20"/><ellipse cx="400" cy="1000" rx="30" ry="16"/>
+            </g>
+            <g fill="#d99a4e">
+              <ellipse cx="470" cy="895" rx="26" ry="10"/><ellipse cx="625" cy="932" rx="30" ry="12"/><ellipse cx="520" cy="1032" rx="34" ry="13"/>
+            </g>
+            <g fill="#4a2814">
+              <circle cx="560" cy="880" r="9"/><circle cx="430" cy="1080" r="11"/><circle cx="690" cy="1000" r="8"/><circle cx="580" cy="1110" r="10"/>
+            </g>
+          </g>
+        </g>
+      </svg>
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;inset:0;overflow:visible">
+        <g id="mai-tongs" stroke="#2a1a12" stroke-width="9" stroke-linejoin="round" fill="#b9c0c6">
+          <path d="M1200 700 L640 930 L655 960 L1220 760 Z"/><path d="M1220 820 L650 990 L660 1020 L1240 880 Z"/>
+        </g>
+        <g id="mai-stars" fill="#ffd23f" stroke="#2a1a12" stroke-width="5" stroke-linejoin="round">
+          <path id="mai-st0" transform="translate(300 760) scale(1)" d="M0 -40 L10 -10 L40 0 L10 10 L0 40 L-10 10 L-40 0 L-10 -10 Z" opacity="0"/><path id="mai-st1" transform="translate(800 800) scale(0.8)" d="M0 -40 L10 -10 L40 0 L10 10 L0 40 L-10 10 L-40 0 L-10 -10 Z" opacity="0"/><path id="mai-st2" transform="translate(270 1150) scale(0.7)" d="M0 -40 L10 -10 L40 0 L10 10 L0 40 L-10 10 L-40 0 L-10 -10 Z" opacity="0"/><path id="mai-st3" transform="translate(820 1160) scale(1)" d="M0 -40 L10 -10 L40 0 L10 10 L0 40 L-10 10 L-40 0 L-10 -10 Z" opacity="0"/>
+        </g>
+      </svg>
+    </div>
+      <div id="mai-q" class="t">¿PA' QUÉ SE SELLA?</div>
+      <div id="mai-sabor" class="t">¡POR <span class="y">SABOR!</span></div>
+      <div id="mai-name" class="t">REACCIÓN<br>DE <span class="y">MAILLARD</span></div>
+      <div id="mai-eq" class="t">= COSTRA DORADA<br>LLENA DE SABOR</div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const flip = 2.122;
+      tl.fromTo("#mai-cam", { x: -1080 }, { x: 0, duration: 0.35, ease: "expo.out" }, 0);
+      tl.fromTo("#mai-q", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, 0.816);
+      tl.to("#mai-q", { opacity: 0, filter: "blur(6px)", duration: 0.13 }, flip);
+      tl.fromTo("#mai-tongs", { x: 500, y: -80 }, { x: 0, y: 0, duration: 0.45, ease: "expo.out" }, 0.916);
+      tl.set("#mai-sear", { opacity: 0 }, 0);
+      tl.fromTo("#mai-raw", { scaleX: 1, transformOrigin: "540px 980px" }, { scaleX: 0, y: -60, duration: 0.14, ease: "power2.in" }, flip);
+      tl.set("#mai-raw", { opacity: 0 }, flip + 0.14);
+      tl.set("#mai-sear", { opacity: 1 }, flip + 0.14);
+      tl.fromTo("#mai-sear", { scaleX: 0, y: -60, transformOrigin: "540px 980px" }, { scaleX: 1, y: 0, duration: 0.32, ease: "back.out(2.2)" }, flip + 0.14);
+      tl.to("#mai-tongs", { x: 600, y: -120, duration: 0.3, ease: "power3.in" }, flip + 0.3);
+      tl.fromTo("#mai-sabor", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.out" }, 2.558);
+      tl.to("#mai-sabor", { opacity: 0, filter: "blur(6px)", duration: 0.13 }, 5.222);
+      tl.fromTo("#mai-cam", { scale: 1 }, { scale: 1.42, y: 40, duration: 0.8, ease: "power2.inOut" }, 5.322);
+      tl.fromTo("#mai-name", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 5.872);
+      tl.fromTo("#mai-eq", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 7.276);
+      for (let i = 0; i < 4; i++) {
+        tl.fromTo("#mai-st" + i, { opacity: 0, scale: 0.2, rotation: 0 }, { opacity: 1, scale: 1, rotation: 45, duration: 0.3, ease: "back.out(2)" }, 7.376 + i * 0.08);
+        tl.to("#mai-st" + i, { opacity: 0, scale: 0.4, duration: 0.2 }, 8.376 + i * 0.05);
+      }
+      window.__timelines["maillard"] = tl;
+    })();
+  </script>
+</template>

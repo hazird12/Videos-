@@ -1,0 +1,74 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Montserrat", sans-serif; }
+
+    #chef-cam { position: absolute; inset: 0; transform-origin: 540px 820px; }
+    #chef-kitchen { position: absolute; inset: 0; }
+    #chef-fig { position: absolute; left: 40px; top: 300px; width: 1000px; height: 1500px; }
+    #chef-fig svg { overflow: visible; }
+  </style>
+  <div id="root" data-composition-id="chef" data-width="1080" data-height="1920">
+    <div id="chef-cam">
+      <svg id="chef-kitchen" viewBox="0 0 1080 1920" width="1080" height="1920">
+        <defs>
+          <pattern id="tile" width="120" height="60" patternUnits="userSpaceOnUse">
+            <rect width="120" height="60" fill="#f3eee5"/>
+            <rect x="2" y="2" width="116" height="56" rx="6" fill="#faf7f1"/>
+            <path d="M0 59 H120 M119 0 V60" stroke="#ddd3c3" stroke-width="3"/>
+          </pattern>
+          <pattern id="tile2" width="120" height="60" patternUnits="userSpaceOnUse" patternTransform="translate(60 0)">
+            <rect width="120" height="60" fill="url(#tile)"/>
+          </pattern>
+          <linearGradient id="warm" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffd9a0" stop-opacity="0.35"/>
+            <stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect width="1080" height="1920" fill="url(#tile)"/>
+        <rect width="1080" height="1920" fill="url(#warm)"/>
+        <!-- repisa con frascos -->
+        <rect x="-10" y="560" width="1100" height="26" rx="6" fill="#8a5a33" stroke="#2a1a12" stroke-width="7"/>
+        <g stroke="#2a1a12" stroke-width="7" stroke-linejoin="round">
+          <rect x="40" y="440" width="80" height="120" rx="14" fill="#e8b04a"/><rect x="48" y="420" width="64" height="26" rx="6" fill="#c0392b"/>
+          <rect x="140" y="470" width="70" height="90" rx="12" fill="#7fae5a"/><rect x="146" y="452" width="58" height="22" rx="6" fill="#3d3d40"/>
+          <rect x="880" y="450" width="74" height="110" rx="12" fill="#d96b3a"/><rect x="886" y="430" width="62" height="24" rx="6" fill="#3d3d40"/>
+          <rect x="970" y="480" width="70" height="80" rx="12" fill="#f0e6cf"/><rect x="976" y="462" width="58" height="22" rx="6" fill="#c0392b"/>
+        </g>
+        <!-- barra con ollas de cobre colgando -->
+        <rect x="-10" y="180" width="1100" height="16" rx="8" fill="#6b6f74" stroke="#2a1a12" stroke-width="6"/>
+        <g stroke="#2a1a12" stroke-width="7" stroke-linejoin="round" fill="#c8733f">
+          <path d="M70 196 V230"/><circle cx="70" cy="310" r="80"/><circle cx="70" cy="310" r="56" fill="#d98a52"/>
+          <path d="M1010 196 V226"/><circle cx="1010" cy="300" r="72"/><circle cx="1010" cy="300" r="50" fill="#d98a52"/>
+          <path d="M175 196 V240" /><rect x="152" y="240" width="46" height="150" rx="20" fill="#9aa2a8"/>
+          <path d="M900 196 V236" /><path d="M870 236 h60 l-10 120 h-40 z" fill="#9aa2a8"/>
+        </g>
+        <!-- mesón de acero detrás del chef -->
+        <rect x="-10" y="1440" width="1100" height="500" fill="#b9c0c6" stroke="#2a1a12" stroke-width="8"/>
+        <rect x="-10" y="1440" width="1100" height="40" fill="#d5dade" stroke="#2a1a12" stroke-width="8"/>
+        <g stroke="#2a1a12" stroke-width="7" stroke-linejoin="round">
+          <ellipse cx="120" cy="1430" rx="70" ry="34" fill="#e2412f"/><ellipse cx="200" cy="1440" rx="56" ry="30" fill="#e85a3c"/>
+          <path d="M930 1460 q40 -120 90 -110 q-10 70 -60 110 z" fill="#6aa84f"/><path d="M890 1460 q10 -100 70 -120 q10 60 -40 120 z" fill="#5d9443"/>
+        </g>
+      </svg>
+      <div id="chef-fig"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const rig = window.ChefRig.mount(document.getElementById("chef-fig"));
+      const keys = { pose: [[0,"rest"],[1.572,"fingerUp"],[4.008,"hat"],[6.8,"explain"],[8.942,"rest"],[30.72,"explain"],[34.206,"door"],[37.766,"shrug"],[42.406,"point"],[45.082,"thumbs"]], face: [[0,"serious"],[1.572,"serious"],[4.008,"happy"],[8.024,"sly"],[30.72,"sly"],[35.984,"nope"],[37.766,"wow"],[39.038,"serious"],[42.406,"happy"]], talk: [[0,3.678],[3.958,8.662],[8.942,15.2],[15.48,21.486],[21.766,30.44],[30.72,37.486],[37.766,42.126],[42.406,46.088]] };
+      const P = { t: 0 };
+      rig.render(0, keys, window.VOICE_ENV, 0);
+      tl.to(P, { t: 48.29, duration: 48.29, ease: "none", onUpdate: () => rig.render(P.t, keys, window.VOICE_ENV, P.t) }, 0);
+      tl.set("#chef-cam", { scale: 1, x: 0, y: 0 }, 0);
+      tl.fromTo("#chef-cam", { scale: 1.230, x: 0, y: -30 }, { scale: 1.16, x: 0, y: -30, duration: 0.55, ease: "expo.out" }, 1.572);
+      tl.fromTo("#chef-cam", { scale: 1.060, x: 0, y: 0 }, { scale: 1, x: 0, y: 0, duration: 0.55, ease: "expo.out" }, 3.958);
+      tl.fromTo("#chef-cam", { scale: 1.166, x: -30, y: 70 }, { scale: 1.1, x: -30, y: 70, duration: 0.55, ease: "expo.out" }, 30.67);
+      tl.fromTo("#chef-cam", { scale: 1.102, x: 30, y: 30 }, { scale: 1.04, x: 30, y: 30, duration: 0.55, ease: "expo.out" }, 37.716);
+      tl.fromTo("#chef-cam", { scale: 1.060, x: 0, y: 0 }, { scale: 1, x: 0, y: 0, duration: 0.55, ease: "expo.out" }, 42.356);
+      tl.fromTo("#chef-cam", { scale: 1.0 }, { scale: 1.13, y: 120, duration: 1.4, ease: "power2.inOut" }, 44.482);
+      window.__timelines["chef"] = tl;
+    })();
+  </script>
+</template>
