@@ -7,8 +7,9 @@
          text-shadow: 0 10px 0 rgba(42,26,18,0.35); }
     .t span { display: inline-block; }
     .y { color: #ffd23f; } .r { color: #e63b2e; }
-    #ti-hook { top: 190px; font-size: 84px; }
+    #ti-hook { top: 215px; font-size: 84px; left: 70px; right: 70px; padding: 18px 10px 26px; background: rgba(30,18,12,0.62); border-radius: 30px; }
     #ti-hook .l2 { font-size: 128px; }
+    #ti-hook .nobox { color: #fff; background: #c62a1f; border-radius: 18px; padding: 0 18px 8px; -webkit-text-stroke: 0; text-shadow: none; }
     #ti-plate { position: absolute; left: 90px; right: 90px; top: 210px; text-align: center; }
     #ti-plate .nm { display: inline-block; background: #e63b2e; color: #fff; font: 900 74px/1 "Archivo Black", sans-serif; padding: 20px 34px 24px; border: 8px solid #2a1a12; border-radius: 16px; }
     #ti-plate .sub { display: inline-block; margin-top: 14px; background: #ffd23f; color: #2a1a12; font: 800 44px/1 "Montserrat", sans-serif; padding: 12px 24px; border: 6px solid #2a1a12; border-radius: 12px; }
@@ -20,7 +21,7 @@
     #ti-pura { top: 470px; font-size: 128px; color: #ffd23f; }
   </style>
   <div id="root" data-composition-id="titles" data-width="1080" data-height="1920">
-    <div id="ti-hook" class="t"><span class="l1">SELLAR LA CARNE</span><br><span class="l2"><span class="r">NO</span> GUARDA</span><br><span class="l3">LOS <span class="y">JUGOS</span></span></div>
+    <div id="ti-hook" class="t"><span class="l1">SELLAR LA CARNE</span><br><span class="l2"><span class="r nobox">NO</span> GUARDA</span><br><span class="l3">LOS <span class="y">JUGOS</span></span></div>
     <div id="ti-plate"><div class="nm">CHEF CHINO ARTAVIA</div><br><div class="sub">Mitos de cocina #1</div></div>
     <div id="ti-truco" class="t">¿EL VERDADERO <span class="y">TRUCO</span>?</div>
     <div id="ti-cta" class="t">MÁS SECRETOS DE COCINA</div>
@@ -32,19 +33,19 @@
       const tl = gsap.timeline({ paused: true });
       // gancho: en pantalla desde el cuadro 0
       tl.set("#ti-hook", { opacity: 1 }, 0);
-      tl.fromTo("#ti-hook .r", { scale: 1 }, { scale: 1.25, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 1 }, 1.692);
-      tl.to("#ti-hook", { opacity: 0, filter: "blur(8px)", duration: 0.18 }, 3.778);
-      tl.fromTo("#ti-plate .nm", { opacity: 0, x: -500 }, { opacity: 1, x: 0, duration: 0.45, ease: "expo.out" }, 4.996);
-      tl.fromTo("#ti-plate .sub", { opacity: 0, x: 500 }, { opacity: 1, x: 0, duration: 0.45, ease: "expo.out" }, 5.146);
-      tl.to("#ti-plate", { opacity: 0, duration: 0.15 }, 8.712);
-      tl.fromTo("#ti-truco", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.out" }, 37.716);
-      tl.to("#ti-truco", { opacity: 0, duration: 0.12 }, 39.238);
-      tl.fromTo("#ti-cta", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 42.456);
-      tl.fromTo("#ti-btn", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, 42.606);
-      tl.to("#ti-btn b", { scale: 0.9, duration: 0.08, ease: "power2.in" }, 44.582);
-      tl.set("#ti-b1", { className: "on", textContent: "SIGUIENDO ✓" }, 44.662);
-      tl.to("#ti-btn b", { scale: 1, duration: 0.3, ease: "back.out(3)" }, 44.662);
-      tl.fromTo("#ti-pura", { opacity: 0, scale: 1.6, rotation: -6 }, { opacity: 1, scale: 1, rotation: -4, duration: 0.22, ease: "power4.out" }, 45.082);
+      tl.fromTo("#ti-hook .r", { scale: 1 }, { scale: 1.25, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 1 }, 1.486);
+      tl.to("#ti-hook", { opacity: 0, filter: "blur(8px)", duration: 0.18 }, 2.973);
+      tl.fromTo("#ti-plate .nm", { opacity: 0, x: -500 }, { opacity: 1, x: 0, duration: 0.45, ease: "expo.out" }, 4.057);
+      tl.fromTo("#ti-plate .sub", { opacity: 0, x: 500 }, { opacity: 1, x: 0, duration: 0.45, ease: "expo.out" }, 4.207);
+      tl.to("#ti-plate", { opacity: 0, duration: 0.15 }, 6.707);
+      tl.fromTo("#ti-truco", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.out" }, 29.845);
+      tl.to("#ti-truco", { opacity: 0, duration: 0.12 }, 31.233);
+      tl.fromTo("#ti-cta", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 33.8);
+      tl.fromTo("#ti-btn", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, 33.95);
+      tl.to("#ti-btn b", { scale: 0.9, duration: 0.08, ease: "power2.in" }, 35.475);
+      tl.set("#ti-b1", { className: "on", textContent: "SIGUIENDO ✓" }, 35.555);
+      tl.to("#ti-btn b", { scale: 1, duration: 0.3, ease: "back.out(3)" }, 35.555);
+      tl.fromTo("#ti-pura", { opacity: 0, scale: 1.6, rotation: -6 }, { opacity: 1, scale: 1, rotation: -4, duration: 0.22, ease: "power4.out" }, 35.975);
       tl.set(["#ti-plate","#ti-truco","#ti-cta","#ti-btn","#ti-pura"], { opacity: 0 }, 0);
       window.__timelines["titles"] = tl;
     })();

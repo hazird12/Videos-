@@ -67,11 +67,11 @@
       for (let i = 0; i < 5; i++) tl.fromTo("#board-sl" + i, { x: 120 + i * 92, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "expo.out" }, 0.25 + i * 0.22);
       for (let i = 0; i < 5; i++) tl.fromTo("#board-knife", { y: -120 }, { y: 0, duration: 0.11, ease: "power2.in", immediateRender: i === 0 }, 0.12 + i * 0.22);
       tl.to("#board-knife", { y: -900, duration: 0.3, ease: "power3.in" }, 1.35);
-      tl.fromTo("#board-c1", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, 0.318);
-      tl.fromTo("#board-c2", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, 1.794);
-      tl.fromTo("#board-clock", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 1.894);
-      tl.fromTo("#board-hand", { rotation: 0, transformOrigin: "0px 0px" }, { rotation: 360, duration: 1.2, ease: "none" }, 2.044);
-      tl.fromTo("#board-cam", { scale: 1 }, { scale: 1.06, duration: 2.636, ease: "power1.out" }, 0.4);
+      tl.fromTo("#board-c1", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, 0.228);
+      tl.fromTo("#board-c2", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, 1.57);
+      tl.fromTo("#board-clock", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 1.67);
+      tl.fromTo("#board-hand", { rotation: 0, svgOrigin: "870 470" }, { rotation: 360, duration: 1.2, ease: "none" }, 1.82);
+      tl.fromTo("#board-cam", { scale: 1 }, { scale: 1.06, duration: 2.035, ease: "power1.out" }, 0.4);
       window.__timelines["board"] = tl;
     })();
   </script>

@@ -64,25 +64,25 @@
   <script>
     (function () {
       const tl = gsap.timeline({ paused: true });
-      const flip = 2.122;
+      const flip = 1.947;
       tl.fromTo("#mai-cam", { x: -1080 }, { x: 0, duration: 0.35, ease: "expo.out" }, 0);
-      tl.fromTo("#mai-q", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, 0.816);
+      tl.fromTo("#mai-q", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, 0.3);
       tl.to("#mai-q", { opacity: 0, filter: "blur(6px)", duration: 0.13 }, flip);
-      tl.fromTo("#mai-tongs", { x: 500, y: -80 }, { x: 0, y: 0, duration: 0.45, ease: "expo.out" }, 0.916);
+      tl.fromTo("#mai-tongs", { x: 500, y: -80 }, { x: 0, y: 0, duration: 0.45, ease: "expo.out" }, 0.95);
       tl.set("#mai-sear", { opacity: 0 }, 0);
-      tl.fromTo("#mai-raw", { scaleX: 1, transformOrigin: "540px 980px" }, { scaleX: 0, y: -60, duration: 0.14, ease: "power2.in" }, flip);
+      tl.fromTo("#mai-raw", { scaleX: 1, svgOrigin: "540 980" }, { scaleX: 0, y: -60, duration: 0.14, ease: "power2.in" }, flip);
       tl.set("#mai-raw", { opacity: 0 }, flip + 0.14);
       tl.set("#mai-sear", { opacity: 1 }, flip + 0.14);
-      tl.fromTo("#mai-sear", { scaleX: 0, y: -60, transformOrigin: "540px 980px" }, { scaleX: 1, y: 0, duration: 0.32, ease: "back.out(2.2)" }, flip + 0.14);
+      tl.fromTo("#mai-sear", { scaleX: 0, y: -60, svgOrigin: "540 980" }, { scaleX: 1, y: 0, duration: 0.32, ease: "back.out(2.2)" }, flip + 0.14);
       tl.to("#mai-tongs", { x: 600, y: -120, duration: 0.3, ease: "power3.in" }, flip + 0.3);
-      tl.fromTo("#mai-sabor", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.out" }, 2.558);
-      tl.to("#mai-sabor", { opacity: 0, filter: "blur(6px)", duration: 0.13 }, 5.222);
-      tl.fromTo("#mai-cam", { scale: 1 }, { scale: 1.42, y: 40, duration: 0.8, ease: "power2.inOut" }, 5.322);
-      tl.fromTo("#mai-name", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 5.872);
-      tl.fromTo("#mai-eq", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 7.276);
+      tl.fromTo("#mai-sabor", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.out" }, 2.336);
+      tl.to("#mai-sabor", { opacity: 0, filter: "blur(6px)", duration: 0.13 }, 4.249);
+      tl.fromTo("#mai-cam", { scale: 1 }, { scale: 1.42, y: 40, duration: 0.8, ease: "power2.inOut" }, 4.349);
+      tl.fromTo("#mai-name", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 4.899);
+      tl.fromTo("#mai-eq", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 5.499);
       for (let i = 0; i < 4; i++) {
-        tl.fromTo("#mai-st" + i, { opacity: 0, scale: 0.2, rotation: 0 }, { opacity: 1, scale: 1, rotation: 45, duration: 0.3, ease: "back.out(2)" }, 7.376 + i * 0.08);
-        tl.to("#mai-st" + i, { opacity: 0, scale: 0.4, duration: 0.2 }, 8.376 + i * 0.05);
+        tl.fromTo("#mai-st" + i, { opacity: 0, scale: 0.2, rotation: 0 }, { opacity: 1, scale: 1, rotation: 45, duration: 0.3, ease: "back.out(2)" }, 6.056 + i * 0.08);
+        tl.to("#mai-st" + i, { opacity: 0, scale: 0.4, duration: 0.2 }, 7.009 + i * 0.05);
       }
       window.__timelines["maillard"] = tl;
     })();

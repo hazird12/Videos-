@@ -51,14 +51,14 @@
     (function () {
       const tl = gsap.timeline({ paused: true });
       tl.fromTo("#liebig-card", { x: 1080, rotation: 6 }, { x: 0, rotation: 0, duration: 0.5, ease: "expo.out" }, 0);
-      tl.fromTo("#liebig-sci", { scale: 1, transformOrigin: "415px 760px" }, { scale: 1.06, duration: 7.128, ease: "none" }, 0);
-      tl.fromTo("#liebig-flame", { scaleY: 0.85, transformOrigin: "750px 880px" }, { scaleY: 1.12, duration: 0.25, ease: "sine.inOut", repeat: 27, yoyo: true }, 0);
-      tl.fromTo("#liebig-bub", { y: 0, opacity: 1 }, { y: -60, opacity: 0, duration: 0.9, ease: "power1.out", repeat: 6 }, 0);
+      tl.fromTo("#liebig-sci", { scale: 1, svgOrigin: "415 760" }, { scale: 1.06, duration: 6.055, ease: "none" }, 0);
+      tl.fromTo("#liebig-flame", { scaleY: 0.85, svgOrigin: "750 880" }, { scaleY: 1.12, duration: 0.25, ease: "sine.inOut", repeat: 23, yoyo: true }, 0);
+      tl.fromTo("#liebig-bub", { y: 0, opacity: 1 }, { y: -60, opacity: 0, duration: 0.9, ease: "power1.out", repeat: 5 }, 0);
       tl.fromTo("#liebig-era", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0.25);
-      tl.fromTo("#liebig-sub", { opacity: 0 }, { opacity: 1, duration: 0.16 }, 1.914);
-      tl.fromTo("#liebig-quote", { opacity: 0, y: 40, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "expo.out" }, 3.634);
-      tl.fromTo("#liebig-stamp", { opacity: 0, scale: 2.4, rotation: -14 }, { opacity: 1, scale: 1, rotation: -12, duration: 0.22, ease: "power4.in" }, 5.898);
-      [[10,-6],[-8,6],[5,-3],[0,0]].forEach(([x,y],i)=>tl.to("#liebig-card",{x,y,duration:0.04,ease:"none"},6.118+i*0.04));
+      tl.fromTo("#liebig-sub", { opacity: 0 }, { opacity: 1, duration: 0.16 }, 2.117);
+      tl.fromTo("#liebig-quote", { opacity: 0, y: 40, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "expo.out" }, 3.48);
+      tl.fromTo("#liebig-stamp", { opacity: 0, scale: 2.4, rotation: -14 }, { opacity: 1, scale: 1, rotation: -12, duration: 0.22, ease: "power4.in" }, 5.214);
+      [[10,-6],[-8,6],[5,-3],[0,0]].forEach(([x,y],i)=>tl.to("#liebig-card",{x,y,duration:0.04,ease:"none"},5.434+i*0.04));
       window.__timelines["liebig"] = tl;
     })();
   </script>

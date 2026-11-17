@@ -25,11 +25,67 @@ const norm = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").rep
 let meta = null;
 if (fs.existsSync("audio_meta.json")) meta = JSON.parse(fs.readFileSync("audio_meta.json", "utf8"));
 
+// Alineación sin modelo: pausas del audio = límites de frase; dentro, reparto por sílabas
+function align(wav, tokens) {
+  const raw = execFileSync("ffmpeg", ["-v", "error", "-i", wav, "-ac", "1", "-ar", "16000", "-f", "s16le", "-"], { maxBuffer: 1 << 28 });
+  const smp = new Int16Array(raw.buffer, raw.byteOffset, raw.length >> 1);
+  const HOP = 160; // 10 ms
+  const rms = [];
+  for (let i = 0; i * HOP < smp.length; i++) {
+    let a = 0; const e = Math.min(smp.length, (i + 1) * HOP);
+    for (let j = i * HOP; j < e; j++) a += smp[j] * smp[j];
+    rms.push(Math.sqrt(a / HOP) / 32768);
+  }
+  const p95 = rms.slice().sort((a, b) => a - b)[Math.floor(rms.length * 0.95)];
+  const sp = rms.map((x) => x > p95 * 0.08);
+  const first = sp.indexOf(true), last = sp.lastIndexOf(true);
+  const gaps = [];
+  for (let i = first; i <= last; i++) {
+    if (!sp[i]) { let j = i; while (j <= last && !sp[j]) j++; if (j - i >= 6) gaps.push([i, j]); i = j; }
+  }
+  // frases según la puntuación
+  const phrases = []; let cur = [];
+  tokens.forEach((tk, i) => { cur.push(tk); if (/[.,:!?]$/.test(tk) || i === tokens.length - 1) { phrases.push(cur); cur = []; } });
+  const jf = wav.replace(/\.wav$/, ".json");
+  if (fs.existsSync(jf)) {
+    const sp2 = JSON.parse(fs.readFileSync(jf, "utf8"));
+    if (sp2.length === phrases.length) {
+      const syl2 = (w) => Math.max(1, (norm(w).replace(/200/, "doscientos").match(/[aeiouáéíóúü]+/g) || []).length) + 0.6;
+      const words = [];
+      phrases.forEach((ph, k) => {
+        const a = sp2[k].start, b = sp2[k].end, tot = ph.reduce((s, w) => s + syl2(w), 0); let x = a;
+        ph.forEach((w) => { const d = ((b - a) * syl2(w)) / tot; words.push({ text: w, start: +x.toFixed(3), end: +(x + d).toFixed(3) }); x += d; });
+      });
+      return { dur: +(smp.length / 16000).toFixed(3), words };
+    }
+  }
+  const nb = Math.min(phrases.length - 1, gaps.length);
+  const cuts = gaps.slice().sort((a, b) => (b[1] - b[0]) - (a[1] - a[0])).slice(0, nb).sort((a, b) => a[0] - b[0]);
+  // si hay menos pausas que frases, se unen las últimas frases
+  while (phrases.length - 1 > cuts.length) { const x = phrases.pop(); phrases[phrases.length - 1].push(...x); }
+  const spans = []; let st = first;
+  cuts.forEach(([a, b]) => { spans.push([st, a]); st = b; });
+  spans.push([st, last + 1]);
+  const syl = (w) => Math.max(1, (norm(w).match(/[aeiouáéíóúü]+/g) || []).length) + 0.6;
+  const words = [];
+  phrases.forEach((ph, k) => {
+    const [a, b] = spans[k]; const tot = ph.reduce((s, w) => s + syl(w), 0); let x = a;
+    ph.forEach((w) => { const d = ((b - a) * syl(w)) / tot; words.push({ text: w, start: +(x / 100).toFixed(3), end: +((x + d) / 100).toFixed(3) }); x += d; });
+  });
+  return { dur: +(smp.length / 16000).toFixed(3), words };
+}
+
 let t = 0;
 for (const L of LINES) {
   const tokens = L.text.split(/\s+/);
   const v = meta && (meta.voices || []).find((x) => x.id === L.id);
-  if (v && v.words && v.words.length) {
+  const wav = `assets/voice/${L.id}.wav`;
+  if ((!v || !v.words) && fs.existsSync(wav)) {
+    L.src = wav;
+    const al = align(wav, tokens);
+    L.dur = al.dur;
+    L.words = al.words;
+  } else if (v && v.words && v.words.length) {
     L.dur = v.duration_s;
     L.src = v.path.replace(/^\.?\/?/, "");
     // emparejar por posición con nuestro texto (para conservar la ortografía)
@@ -289,7 +345,7 @@ function rng(seed) { let a = seed; return () => { a |= 0; a = (a + 0x6d2b79f5) |
       </svg>
     </div>`,
 `      const land = 0.42;
-      tl.fromTo("#pan-steak", { y: -520, scale: 1.25, rotation: -14, transformOrigin: "540px 980px" }, { y: 0, scale: 1, rotation: 0, duration: land, ease: "power3.in" }, 0);
+      tl.fromTo("#pan-steak", { y: -520, scale: 1.25, rotation: -14, svgOrigin: "540 980" }, { y: 0, scale: 1, rotation: 0, duration: land, ease: "power3.in" }, 0);
       tl.fromTo("#pan-steak", { scaleY: 0.86, scaleX: 1.08 }, { scaleY: 1, scaleX: 1, duration: 0.3, ease: "back.out(3)" }, land);
       // sacudida de cámara al caer
       [[14,-10],[-12,8],[9,6],[-6,-5],[3,3],[0,0]].forEach(([x,y],i)=>tl.to("#pan-cam",{x,y,duration:0.045,ease:"none"},land+i*0.045));
@@ -349,8 +405,8 @@ function rng(seed) { let a = seed; return () => { a |= 0; a = (a + 0x6d2b79f5) |
       <div id="liebig-stamp"><span>MITO</span></div>
     </div>`,
 `      tl.fromTo("#liebig-card", { x: 1080, rotation: 6 }, { x: 0, rotation: 0, duration: 0.5, ease: "expo.out" }, 0);
-      tl.fromTo("#liebig-sci", { scale: 1, transformOrigin: "415px 760px" }, { scale: 1.06, duration: ${D}, ease: "none" }, 0);
-      tl.fromTo("#liebig-flame", { scaleY: 0.85, transformOrigin: "750px 880px" }, { scaleY: 1.12, duration: 0.25, ease: "sine.inOut", repeat: ${Math.max(0, Math.floor(D / 0.25) - 1)}, yoyo: true }, 0);
+      tl.fromTo("#liebig-sci", { scale: 1, svgOrigin: "415 760" }, { scale: 1.06, duration: ${D}, ease: "none" }, 0);
+      tl.fromTo("#liebig-flame", { scaleY: 0.85, svgOrigin: "750 880" }, { scaleY: 1.12, duration: 0.25, ease: "sine.inOut", repeat: ${Math.max(0, Math.floor(D / 0.25) - 1)}, yoyo: true }, 0);
       tl.fromTo("#liebig-bub", { y: 0, opacity: 1 }, { y: -60, opacity: 0, duration: 0.9, ease: "power1.out", repeat: ${Math.max(0, Math.floor(D / 0.9) - 1)} }, 0);
       tl.fromTo("#liebig-era", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0.25);
       tl.fromTo("#liebig-sub", { opacity: 0 }, { opacity: 1, duration: 0.16 }, ${r3(rel(at("l3", "químico"), S.start) - 0.1)});
@@ -404,7 +460,7 @@ function rng(seed) { let a = seed; return () => { a |= 0; a = (a + 0x6d2b79f5) |
       <div id="juice-q" class="t">¿“SELLADA”?</div>
       <div id="juice-lbl" class="t"><span class="y">JUGO</span><br>SALIENDO</div>`,
 `      tl.fromTo("#juice-cam", { scale: 1.14, filter: "blur(8px)" }, { scale: 1.24, filter: "blur(0px)", duration: ${D}, ease: "expo.out" }, 0);
-      tl.fromTo("#juice-fire", { scaleY: 0.9, transformOrigin: "540px 1160px" }, { scaleY: 1.1, duration: 0.2, ease: "sine.inOut", repeat: ${Math.max(0, Math.floor(D / 0.2) - 1)}, yoyo: true }, 0);
+      tl.fromTo("#juice-fire", { scaleY: 0.9, svgOrigin: "540 1160" }, { scaleY: 1.1, duration: 0.2, ease: "sine.inOut", repeat: ${Math.max(0, Math.floor(D / 0.2) - 1)}, yoyo: true }, 0);
       tl.fromTo("#juice-q", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 0.3);
       tl.to("#juice-q", { opacity: 0, filter: "blur(6px)", duration: 0.15 }, ${r3(tJugo - 0.45)});
       tl.fromTo("#juice-pool", { attr: { rx: 330, ry: 6 } }, { attr: { rx: 430, ry: 22 }, duration: ${r3(Math.max(0.8, tLiq + 0.6))}, ease: "power2.out" }, 0.2);
@@ -453,20 +509,20 @@ function rng(seed) { let a = seed; return () => { a |= 0; a = (a + 0x6d2b79f5) |
       <div id="mai-eq" class="t">= COSTRA DORADA<br>LLENA DE SABOR</div>`,
 `      const flip = ${r3(tPor - 0.25)};
       tl.fromTo("#mai-cam", { x: -1080 }, { x: 0, duration: 0.35, ease: "expo.out" }, 0);
-      tl.fromTo("#mai-q", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, ${r3(Math.max(0.1, tQue - 0.1))});
+      tl.fromTo("#mai-q", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, 0.3);
       tl.to("#mai-q", { opacity: 0, filter: "blur(6px)", duration: 0.13 }, flip);
       tl.fromTo("#mai-tongs", { x: 500, y: -80 }, { x: 0, y: 0, duration: 0.45, ease: "expo.out" }, ${r3(Math.max(0.2, tQue))});
       tl.set("#mai-sear", { opacity: 0 }, 0);
-      tl.fromTo("#mai-raw", { scaleX: 1, transformOrigin: "540px 980px" }, { scaleX: 0, y: -60, duration: 0.14, ease: "power2.in" }, flip);
+      tl.fromTo("#mai-raw", { scaleX: 1, svgOrigin: "540 980" }, { scaleX: 0, y: -60, duration: 0.14, ease: "power2.in" }, flip);
       tl.set("#mai-raw", { opacity: 0 }, flip + 0.14);
       tl.set("#mai-sear", { opacity: 1 }, flip + 0.14);
-      tl.fromTo("#mai-sear", { scaleX: 0, y: -60, transformOrigin: "540px 980px" }, { scaleX: 1, y: 0, duration: 0.32, ease: "back.out(2.2)" }, flip + 0.14);
+      tl.fromTo("#mai-sear", { scaleX: 0, y: -60, svgOrigin: "540 980" }, { scaleX: 1, y: 0, duration: 0.32, ease: "back.out(2.2)" }, flip + 0.14);
       tl.to("#mai-tongs", { x: 600, y: -120, duration: 0.3, ease: "power3.in" }, flip + 0.3);
       tl.fromTo("#mai-sabor", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.out" }, ${r3(tSab - 0.12)});
       tl.to("#mai-sabor", { opacity: 0, filter: "blur(6px)", duration: 0.13 }, ${r3(tMai - 1.0)});
       tl.fromTo("#mai-cam", { scale: 1 }, { scale: 1.42, y: 40, duration: 0.8, ease: "power2.inOut" }, ${r3(tMai - 0.9)});
       tl.fromTo("#mai-name", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, ${r3(tMai - 0.35)});
-      tl.fromTo("#mai-eq", { opacity: 0 }, { opacity: 1, duration: 0.18 }, ${r3(tCos - 0.1)});
+      tl.fromTo("#mai-eq", { opacity: 0 }, { opacity: 1, duration: 0.18 }, ${r3(tMai + 0.25)});
       for (let i = 0; i < 4; i++) {
         tl.fromTo("#mai-st" + i, { opacity: 0, scale: 0.2, rotation: 0 }, { opacity: 1, scale: 1, rotation: 45, duration: 0.3, ease: "back.out(2)" }, ${r3(tCos)} + i * 0.08);
         tl.to("#mai-st" + i, { opacity: 0, scale: 0.4, duration: 0.2 }, ${r3(Math.min(D - 0.25, tCos + 1.0))} + i * 0.05);
@@ -510,7 +566,7 @@ function rng(seed) { let a = seed; return () => { a |= 0; a = (a + 0x6d2b79f5) |
       <div id="car-bam">¡PUM!</div>
     </div>`,
 `      tl.fromTo("#car-world", { clipPath: "circle(0% at 540px 960px)" }, { clipPath: "circle(120% at 540px 960px)", duration: 0.35, ease: "power2.out" }, 0);
-      tl.fromTo("#car-door", { scaleX: 0.35, transformOrigin: "545px 980px" }, { scaleX: 1, duration: 0.28, ease: "power4.in" }, 0.15);
+      tl.fromTo("#car-door", { scaleX: 0.35, svgOrigin: "545 980" }, { scaleX: 1, duration: 0.28, ease: "power4.in" }, 0.15);
       tl.fromTo("#car-bam", { opacity: 0, scale: 2, rotation: -10 }, { opacity: 1, scale: 1, rotation: -8, duration: 0.16, ease: "power4.out" }, 0.43);
       tl.to("#car-bam", { opacity: 0, duration: 0.15 }, 1.0);
       [[0,-14],[0,8],[0,-5],[0,0]].forEach(([x,y],i)=>tl.to("#car-car",{y,duration:0.05,ease:"none"},0.43+i*0.05));
@@ -571,7 +627,7 @@ function rng(seed) { let a = seed; return () => { a |= 0; a = (a + 0x6d2b79f5) |
       tl.fromTo("#board-c1", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, ${r3(tSob - 0.25)});
       tl.fromTo("#board-c2", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, ${r3(tRep - 0.25)});
       tl.fromTo("#board-clock", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, ${r3(tRep - 0.15)});
-      tl.fromTo("#board-hand", { rotation: 0, transformOrigin: "0px 0px" }, { rotation: 360, duration: 1.2, ease: "none" }, ${r3(tRep)});
+      tl.fromTo("#board-hand", { rotation: 0, svgOrigin: "870 470" }, { rotation: 360, duration: 1.2, ease: "none" }, ${r3(tRep)});
       tl.fromTo("#board-cam", { scale: 1 }, { scale: 1.06, duration: ${r3(Math.max(0.5, D - 0.4))}, ease: "power1.out" }, 0.4);`));
 }
 
@@ -581,8 +637,9 @@ function rng(seed) { let a = seed; return () => { a |= 0; a = (a + 0x6d2b79f5) |
   const tChef = at("l2", "Chef"), tTruco = at("l7", "truco?");
   const tSig = at("l8", "Sígame"), tPura = at("l8", "¡Pura");
   write("compositions/titles.html", scene("titles", TITLE_CSS + `
-    #ti-hook { top: 190px; font-size: 84px; }
+    #ti-hook { top: 215px; font-size: 84px; left: 70px; right: 70px; padding: 18px 10px 26px; background: rgba(30,18,12,0.62); border-radius: 30px; }
     #ti-hook .l2 { font-size: 128px; }
+    #ti-hook .nobox { color: #fff; background: #c62a1f; border-radius: 18px; padding: 0 18px 8px; -webkit-text-stroke: 0; text-shadow: none; }
     #ti-plate { position: absolute; left: 90px; right: 90px; top: 210px; text-align: center; }
     #ti-plate .nm { display: inline-block; background: ${RED}; color: #fff; font: 900 74px/1 "Archivo Black", sans-serif; padding: 20px 34px 24px; border: 8px solid ${INK}; border-radius: 16px; }
     #ti-plate .sub { display: inline-block; margin-top: 14px; background: ${YEL}; color: ${INK}; font: 800 44px/1 "Montserrat", sans-serif; padding: 12px 24px; border: 6px solid ${INK}; border-radius: 12px; }
@@ -592,7 +649,7 @@ function rng(seed) { let a = seed; return () => { a |= 0; a = (a + 0x6d2b79f5) |
     #ti-btn b { display: inline-block; font: 900 64px/1 "Archivo Black", sans-serif; color: #fff; background: ${RED}; padding: 22px 50px 26px; border: 8px solid ${INK}; border-radius: 24px; box-shadow: 0 10px 0 ${INK}; }
     #ti-btn b.on { background: #3d3d40; }
     #ti-pura { top: 470px; font-size: 128px; color: ${YEL}; }`,
-`    <div id="ti-hook" class="t"><span class="l1">SELLAR LA CARNE</span><br><span class="l2"><span class="r">NO</span> GUARDA</span><br><span class="l3">LOS <span class="y">JUGOS</span></span></div>
+`    <div id="ti-hook" class="t"><span class="l1">SELLAR LA CARNE</span><br><span class="l2"><span class="r nobox">NO</span> GUARDA</span><br><span class="l3">LOS <span class="y">JUGOS</span></span></div>
     <div id="ti-plate"><div class="nm">CHEF CHINO ARTAVIA</div><br><div class="sub">Mitos de cocina #1</div></div>
     <div id="ti-truco" class="t">¿EL VERDADERO <span class="y">TRUCO</span>?</div>
     <div id="ti-cta" class="t">MÁS SECRETOS DE COCINA</div>
@@ -634,9 +691,9 @@ function rng(seed) { let a = seed; return () => { a |= 0; a = (a + 0x6d2b79f5) |
     g.end = r3(g.words.at(-1).b + 0.15);
   });
   groups.forEach((g, i) => { const nx = groups[i + 1]; if (nx && g.end > nx.words[0].a - 0.05) g.end = r3(nx.words[0].a - 0.05); });
-  const html = groups.map((g, i) => `      <div id="cap-g${i}" class="cg">${g.words.map((w, j) => `<span id="cap-g${i}w${j}" class="${HOT.has(norm(w.text)) ? "hot" : ""}">${w.text.toUpperCase()}</span>`).join(" ")}</div>`).join("\n");
+  const html = groups.map((g, i) => `      <div id="cap-g${i}" class="cg"><span class="bx">${g.words.map((w, j) => `<span id="cap-g${i}w${j}" class="${HOT.has(norm(w.text)) ? "hot" : ""}">${w.text.toUpperCase()}</span>`).join(" ")}</span></div>`).join("\n");
   const js = groups.map((g, i) => {
-    const words = g.words.map((w, j) => `      tl.fromTo("#cap-g${i}w${j}", { scale: 0.7, opacity: 0.0 }, { scale: 1, opacity: 1, duration: 0.12, ease: "back.out(2.5)" }, ${r3(Math.max(g.start, w.a - 0.04))});`).join("\n");
+    const words = `      tl.fromTo("#cap-g${i} .bx", { scale: 0.82 }, { scale: 1, duration: 0.14, ease: "back.out(2.5)" }, ${g.start});`;
     return `      tl.set("#cap-g${i}", { opacity: 1, visibility: "visible" }, ${g.start});
 ${words}
       tl.to("#cap-g${i}", { opacity: 0, duration: 0.08, ease: "power2.in" }, ${r3(g.end - 0.08)});
@@ -646,6 +703,7 @@ ${words}
     .cg { position: absolute; left: 60px; right: 60px; top: 1150px; text-align: center; opacity: 0; visibility: hidden;
           font: 900 92px/1.05 "Montserrat", sans-serif; color: #fff; -webkit-text-stroke: 12px ${INK}; paint-order: stroke fill; overflow: visible; }
     .cg span { display: inline-block; text-shadow: 0 8px 0 rgba(42,26,18,0.45); }
+    .cg .bx { background: rgba(30,18,12,0.62); border-radius: 26px; padding: 8px 26px 14px; text-shadow: none; }
     .cg span.hot { color: ${YEL}; }`, html, js));
   fs.writeFileSync("captions.json", JSON.stringify(groups.map((g) => ({ start: g.start, end: g.end, text: g.words.map((w) => w.text).join(" ") })), null, 1));
 }
@@ -660,8 +718,14 @@ const EV = {
   pop: r3(at("l5", "sabor!") - 0.12), slam: r3(carIn + 0.43), knife: boardIn + 0.12, click: r3(at("l8", "¡Pura") - 0.5),
   stampPura: at("l8", "¡Pura"),
 };
+fs.writeFileSync("events.json", JSON.stringify({ ...EV, total: TOTAL, cut: cutHookChef, carIn, boardIn, boardOut,
+  liebigIn: SHOTS[1].start, juiceIn: SHOTS[2].start, maiIn: SHOTS[3].start, truco: r3(Lb.l7.start - 0.05),
+  sobre: at("l7", "sobrecocine"), reposar: at("l7", "reposar."), maillard: at("l5", "Maillard:"), costrita: at("l5", "costrita"), chispo: at("l4", "chisporroteo"),
+  lines: LINES.map((l) => [l.id, l.start, l.end]) }, null, 1));
 const audioTags = [];
 for (const L of LINES) if (L.src) audioTags.push(`      <audio id="vo-${L.id}" src="${L.src}" data-start="${L.start}" data-duration="${r3(L.dur)}" data-track-index="10" data-volume="1"></audio>`);
+if (fs.existsSync("assets/music.wav")) audioTags.push(`      <audio id="music" src="assets/music.wav" data-start="0" data-duration="${TOTAL}" data-track-index="11" data-volume="1"></audio>`);
+if (fs.existsSync("assets/sfx.wav")) audioTags.push(`      <audio id="sfx" src="assets/sfx.wav" data-start="0" data-duration="${TOTAL}" data-track-index="12" data-volume="1"></audio>`);
 if (meta && meta.bgm && meta.bgm.path) {
   audioTags.push(`      <audio id="bgm" src="${meta.bgm.path.replace(/^\.?\/?/, "")}" data-start="0" data-duration="${TOTAL}" data-track-index="11" data-volume="0.14"></audio>`);
 }

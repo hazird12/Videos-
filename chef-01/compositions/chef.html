@@ -57,17 +57,17 @@
     (function () {
       const tl = gsap.timeline({ paused: true });
       const rig = window.ChefRig.mount(document.getElementById("chef-fig"));
-      const keys = { pose: [[0,"rest"],[1.572,"fingerUp"],[4.008,"hat"],[6.8,"explain"],[8.942,"rest"],[30.72,"explain"],[34.206,"door"],[37.766,"shrug"],[42.406,"point"],[45.082,"thumbs"]], face: [[0,"serious"],[1.572,"serious"],[4.008,"happy"],[8.024,"sly"],[30.72,"sly"],[35.984,"nope"],[37.766,"wow"],[39.038,"serious"],[42.406,"happy"]], talk: [[0,3.678],[3.958,8.662],[8.942,15.2],[15.48,21.486],[21.766,30.44],[30.72,37.486],[37.766,42.126],[42.406,46.088]] };
+      const keys = { pose: [[0,"rest"],[1.366,"fingerUp"],[3.153,"hat"],[5.523,"explain"],[6.937,"rest"],[24.718,"explain"],[27.375,"door"],[29.895,"shrug"],[33.8,"point"],[35.975,"thumbs"]], face: [[0,"serious"],[1.366,"serious"],[3.153,"happy"],[6.362,"sly"],[24.718,"sly"],[28.677,"nope"],[29.895,"wow"],[31.033,"serious"],[33.8,"happy"]], talk: [[0,2.873],[3.153,6.657],[6.937,12.122],[12.402,17.209],[17.489,24.438],[24.718,29.615],[29.895,33.52],[33.8,36.657]] };
       const P = { t: 0 };
       rig.render(0, keys, window.VOICE_ENV, 0);
-      tl.to(P, { t: 48.29, duration: 48.29, ease: "none", onUpdate: () => rig.render(P.t, keys, window.VOICE_ENV, P.t) }, 0);
+      tl.to(P, { t: 38.86, duration: 38.86, ease: "none", onUpdate: () => rig.render(P.t, keys, window.VOICE_ENV, P.t) }, 0);
       tl.set("#chef-cam", { scale: 1, x: 0, y: 0 }, 0);
-      tl.fromTo("#chef-cam", { scale: 1.230, x: 0, y: -30 }, { scale: 1.16, x: 0, y: -30, duration: 0.55, ease: "expo.out" }, 1.572);
-      tl.fromTo("#chef-cam", { scale: 1.060, x: 0, y: 0 }, { scale: 1, x: 0, y: 0, duration: 0.55, ease: "expo.out" }, 3.958);
-      tl.fromTo("#chef-cam", { scale: 1.166, x: -30, y: 70 }, { scale: 1.1, x: -30, y: 70, duration: 0.55, ease: "expo.out" }, 30.67);
-      tl.fromTo("#chef-cam", { scale: 1.102, x: 30, y: 30 }, { scale: 1.04, x: 30, y: 30, duration: 0.55, ease: "expo.out" }, 37.716);
-      tl.fromTo("#chef-cam", { scale: 1.060, x: 0, y: 0 }, { scale: 1, x: 0, y: 0, duration: 0.55, ease: "expo.out" }, 42.356);
-      tl.fromTo("#chef-cam", { scale: 1.0 }, { scale: 1.13, y: 120, duration: 1.4, ease: "power2.inOut" }, 44.482);
+      tl.fromTo("#chef-cam", { scale: 1.230, x: 0, y: -30 }, { scale: 1.16, x: 0, y: -30, duration: 0.55, ease: "expo.out" }, 1.366);
+      tl.fromTo("#chef-cam", { scale: 1.060, x: 0, y: 0 }, { scale: 1, x: 0, y: 0, duration: 0.55, ease: "expo.out" }, 3.153);
+      tl.fromTo("#chef-cam", { scale: 1.166, x: -30, y: 70 }, { scale: 1.1, x: -30, y: 70, duration: 0.55, ease: "expo.out" }, 24.668);
+      tl.fromTo("#chef-cam", { scale: 1.102, x: 30, y: 30 }, { scale: 1.04, x: 30, y: 30, duration: 0.55, ease: "expo.out" }, 29.845);
+      tl.fromTo("#chef-cam", { scale: 1.060, x: 0, y: 0 }, { scale: 1, x: 0, y: 0, duration: 0.55, ease: "expo.out" }, 33.75);
+      tl.fromTo("#chef-cam", { scale: 1.0 }, { scale: 1.13, y: 120, duration: 1.4, ease: "power2.inOut" }, 35.375);
       window.__timelines["chef"] = tl;
     })();
   </script>
