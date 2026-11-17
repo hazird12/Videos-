@@ -1,0 +1,51 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Montserrat", sans-serif; }
+
+    .t { position: absolute; left: 0; right: 0; text-align: center; font-family: "Archivo Black", "Montserrat", sans-serif;
+         color: #fff; -webkit-text-stroke: 10px #2a1a12; paint-order: stroke fill; letter-spacing: -0.01em; line-height: 0.98;
+         text-shadow: 0 10px 0 rgba(42,26,18,0.35); }
+    .t span { display: inline-block; }
+    .y { color: #ffd23f; } .r { color: #e63b2e; }
+    #wh-world { position: absolute; inset: 0; }
+    #wh-t1 { top: 215px; font-size: 92px; }
+  </style>
+  <div id="root" data-composition-id="whale" data-width="1080" data-height="1920">
+    <div id="wh-world">
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;inset:0;overflow:visible">
+        <rect width="1080" height="1920" fill="#bfe3ea"/>
+        <rect y="900" width="1080" height="1020" fill="#3f9fc8"/>
+        <g id="wh-whale" stroke="#2a1a12" stroke-width="10" stroke-linejoin="round">
+          <path d="M180 900 Q200 700 480 680 Q760 670 820 820 Q860 760 940 700 Q930 800 880 860 Q960 880 980 960 Q900 940 840 920 Q800 1000 560 1010 Q260 1020 180 900 Z" fill="#4a7fc0"/>
+          <path d="M210 930 Q330 1000 560 990 Q700 985 790 940" fill="#bcd6ee" stroke-width="8"/>
+          <circle cx="320" cy="830" r="16" fill="#2a1a12"/><circle cx="326" cy="824" r="5" fill="#fff" stroke="none"/>
+          <path d="M240 900 Q280 920 320 905" fill="none"/>
+          <g id="wh-spout" fill="#fff" stroke-width="7"><path d="M460 680 Q420 560 380 520 Q440 540 460 600 Q480 520 540 500 Q500 560 470 680 Z"/></g>
+        </g>
+        <path d="M0 920 q60 -26 120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0" stroke="#fff" stroke-width="10" fill="none"/>
+        <!-- rótulo PESCADO tachado -->
+        <g id="wh-sign"><g transform="translate(760 520) rotate(6)">
+          <rect x="-190" y="-70" width="380" height="140" rx="16" fill="#e9c98b" stroke="#2a1a12" stroke-width="9"/>
+          <text y="24" text-anchor="middle" font-family="Archivo Black" font-size="68" fill="#2a1a12">PESCADO</text>
+          <path id="wh-x" d="M-170 -60 L170 60 M170 -60 L-170 60" stroke="#e63b2e" stroke-width="22" stroke-linecap="round"/>
+        </g></g>
+      </svg>
+      <div id="wh-t1" class="t">¿LA <span class="y">BALLENA</span>…<br>UN PESCADO?</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#wh-world", { clipPath: "circle(0% at 540px 960px)" }, { clipPath: "circle(120% at 540px 960px)", duration: 0.35, ease: "power2.out" }, 0);
+      tl.set("#wh-whale", { y: 300 }, 0);
+      tl.fromTo("#wh-whale", { y: 300 }, { y: 0, duration: 0.6, ease: "back.out(1.6)" }, 0.05);
+      tl.fromTo("#wh-whale", { y: 0 }, { y: 18, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.7);
+      tl.fromTo("#wh-spout", { scaleY: 0, svgOrigin: "465 680" }, { scaleY: 1, duration: 0.35, ease: "back.out(2)" }, 0.5);
+      tl.fromTo("#wh-t1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, 0.3);
+      tl.fromTo("#wh-sign", { opacity: 0, y: -200 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, 0.556);
+      tl.fromTo("#wh-x", { opacity: 0, scale: 1.6, svgOrigin: "0 0" }, { opacity: 1, scale: 1, duration: 0.18, ease: "power4.in" }, 3.548);
+      tl.set("#wh-x", { opacity: 0 }, 0);
+      window.__timelines["whale"] = tl;
+    })();
+  </script>
+</template>

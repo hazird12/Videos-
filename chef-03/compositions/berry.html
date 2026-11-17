@@ -1,0 +1,62 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Montserrat", sans-serif; }
+
+    .t { position: absolute; left: 0; right: 0; text-align: center; font-family: "Archivo Black", "Montserrat", sans-serif;
+         color: #fff; -webkit-text-stroke: 10px #2a1a12; paint-order: stroke fill; letter-spacing: -0.01em; line-height: 0.98;
+         text-shadow: 0 10px 0 rgba(42,26,18,0.35); }
+    .t span { display: inline-block; }
+    .y { color: #ffd23f; } .r { color: #e63b2e; }
+    #be-cam { position: absolute; inset: 0; transform-origin: 650px 830px; }
+    #be-t0 { top: 215px; font-size: 84px; }
+    #be-t1 { top: 215px; font-size: 84px; }
+    #be-t2 { top: 215px; font-size: 76px; }
+  </style>
+  <div id="root" data-composition-id="berry" data-width="1080" data-height="1920">
+    <div id="be-cam">
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;inset:0;overflow:visible">
+        <rect width="1080" height="1920" fill="#ffe1e4"/>
+        <ellipse cx="540" cy="1240" rx="260" ry="40" fill="#f2bcc2"/>
+        <g id="be-str"><g transform="translate(540 920) scale(1.9)" stroke="#2a1a12" stroke-width="4.7" stroke-linejoin="round">
+  <path d="M0 200 Q-150 120 -140 -10 Q-130 -80 -40 -80 Q0 -60 40 -80 Q130 -80 140 -10 Q150 120 0 200 Z" fill="#e8343f"/>
+  <path d="M-60 -50 Q-90 30 -60 110" fill="none" stroke="#f26b73" stroke-width="7.4" stroke-linecap="round"/>
+  <ellipse cx="42" cy="122" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="-62" cy="91" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="48" cy="56" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="89" cy="8" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="35" cy="-37" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="-8" cy="23" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="87" cy="21" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="56" cy="112" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="-54" cy="-36" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="65" cy="4" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="-50" cy="-14" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="-7" cy="168" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="-56" cy="-23" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="77" cy="27" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="-20" cy="167" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="-50" cy="41" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="3" cy="129" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="33" cy="-11" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="30" cy="81" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="-41" cy="124" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/><ellipse cx="24" cy="-38" rx="7" ry="10" fill="#f6d55c" stroke="#2a1a12" stroke-width="3"/>
+  <path d="M0 -70 L-80 -100 L-30 -110 L-50 -150 L0 -120 L50 -150 L30 -110 L80 -100 Z" fill="#3fa34d"/>
+  <path d="M0 -125 L5 -170" stroke-width="5.3" fill="none"/>
+</g></g>
+        <g id="be-arrows" stroke="#2a1a12" stroke-width="8" fill="#ffd23f" stroke-linejoin="round" opacity="0">
+          <path d="M150 760 L270 800 L250 770 L330 780 L320 820 L280 815 L300 840 Z"/>
+          <path d="M930 980 L810 1000 L835 975 L760 965 L770 925 L810 935 L795 905 Z"/>
+        </g>
+        <!-- zoom a un "puntito": frutito con su semilla -->
+        <g id="be-zoom" opacity="0">
+          <circle cx="760" cy="560" r="170" fill="#fff" stroke="#2a1a12" stroke-width="12"/>
+          <ellipse cx="760" cy="560" rx="70" ry="105" fill="#f6d55c" stroke="#2a1a12" stroke-width="8"/>
+          <ellipse cx="760" cy="575" rx="30" ry="52" fill="#c98a3c" stroke="#2a1a12" stroke-width="6"/>
+          <path d="M640 690 L650 760" stroke="#2a1a12" stroke-width="10"/>
+          <text x="760" y="790" text-anchor="middle" font-family="Archivo Black" font-size="56" fill="#2a1a12">FRUTITO</text>
+        </g>
+      </svg>
+    </div>
+    <div id="be-t0" class="t">¿Y LA <span class="y">FRESA</span>?</div>
+    <div id="be-t1" class="t">¡SEMILLAS<br><span class="y">POR FUERA</span>!</div>
+    <div id="be-t2" class="t">CADA PUNTITO<br>= UN <span class="y">FRUTITO</span></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#be-cam", { x: -1080 }, { x: 0, duration: 0.4, ease: "expo.out" }, 0);
+      tl.fromTo("#be-str", { rotation: -8, svgOrigin: "540 920" }, { rotation: 8, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0);
+      tl.fromTo("#be-t0", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, 0.25);
+      tl.to("#be-t0", { opacity: 0, duration: 0.12 }, 1.366);
+      tl.fromTo("#be-t1", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.out" }, 1.416);
+      tl.fromTo("#be-arrows", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 1.616);
+      tl.to(["#be-t1", "#be-arrows"], { opacity: 0, duration: 0.12 }, 3.152);
+      tl.fromTo("#be-cam", { scale: 1 }, { scale: 1.12, duration: 0.6, ease: "power2.inOut" }, 3.052);
+      tl.fromTo("#be-zoom", { opacity: 0, scale: 0.2, svgOrigin: "650 760" }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 3.252);
+      tl.fromTo("#be-t2", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, 4.747);
+      tl.set(["#be-t1", "#be-t2"], { opacity: 0 }, 0);
+      window.__timelines["berry"] = tl;
+    })();
+  </script>
+</template>

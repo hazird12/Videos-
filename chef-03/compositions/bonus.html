@@ -1,0 +1,48 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Montserrat", sans-serif; }
+
+    .t { position: absolute; left: 0; right: 0; text-align: center; font-family: "Archivo Black", "Montserrat", sans-serif;
+         color: #fff; -webkit-text-stroke: 10px #2a1a12; paint-order: stroke fill; letter-spacing: -0.01em; line-height: 0.98;
+         text-shadow: 0 10px 0 rgba(42,26,18,0.35); }
+    .t span { display: inline-block; }
+    .y { color: #ffd23f; } .r { color: #e63b2e; }
+    #bo-cam { position: absolute; inset: 0; }
+    #bo-t1 { top: 215px; font-size: 76px; }
+  </style>
+  <div id="root" data-composition-id="bonus" data-width="1080" data-height="1920">
+    <div id="bo-cam">
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;inset:0;overflow:visible">
+        <rect width="1080" height="1920" fill="#e7f6dc"/>
+        <rect x="60" y="1080" width="960" height="60" rx="26" fill="#c08a55" stroke="#2a1a12" stroke-width="10"/>
+        <g id="bo-tom" transform="translate(220 920)" stroke="#2a1a12" stroke-width="9" stroke-linejoin="round">
+          <ellipse rx="150" ry="135" fill="#e8402f"/><ellipse cx="-50" cy="-50" rx="36" ry="20" fill="#f47a6a" stroke="none"/>
+          <path d="M0 -130 L-60 -160 L-20 -150 L-40 -200 L0 -160 L40 -200 L20 -150 L60 -160 Z" fill="#3fa34d"/>
+        </g>
+        <g id="bo-uva" transform="translate(540 900)">
+          <path d="M0 -150 L10 -190" stroke="#2a1a12" stroke-width="12"/><path d="M10 -170 Q70 -210 110 -170 Q60 -150 10 -170 Z" fill="#3fa34d" stroke="#2a1a12" stroke-width="7"/>
+          <circle cx="0" cy="-90" r="44" fill="#7b3fa3" stroke="#2a1a12" stroke-width="8"/><circle cx="-14" cy="-104" r="10" fill="#a97ad0"/><circle cx="-50" cy="-40" r="44" fill="#7b3fa3" stroke="#2a1a12" stroke-width="8"/><circle cx="-64" cy="-54" r="10" fill="#a97ad0"/><circle cx="50" cy="-40" r="44" fill="#7b3fa3" stroke="#2a1a12" stroke-width="8"/><circle cx="36" cy="-54" r="10" fill="#a97ad0"/><circle cx="-90" cy="15" r="44" fill="#7b3fa3" stroke="#2a1a12" stroke-width="8"/><circle cx="-104" cy="1" r="10" fill="#a97ad0"/><circle cx="0" cy="15" r="44" fill="#7b3fa3" stroke="#2a1a12" stroke-width="8"/><circle cx="-14" cy="1" r="10" fill="#a97ad0"/><circle cx="90" cy="15" r="44" fill="#7b3fa3" stroke="#2a1a12" stroke-width="8"/><circle cx="76" cy="1" r="10" fill="#a97ad0"/><circle cx="-50" cy="70" r="44" fill="#7b3fa3" stroke="#2a1a12" stroke-width="8"/><circle cx="-64" cy="56" r="10" fill="#a97ad0"/><circle cx="50" cy="70" r="44" fill="#7b3fa3" stroke="#2a1a12" stroke-width="8"/><circle cx="36" cy="56" r="10" fill="#a97ad0"/><circle cx="0" cy="125" r="44" fill="#7b3fa3" stroke="#2a1a12" stroke-width="8"/><circle cx="-14" cy="111" r="10" fill="#a97ad0"/>
+        </g>
+        <g id="bo-chi" transform="translate(860 920)" stroke="#2a1a12" stroke-width="9" stroke-linejoin="round">
+          <path d="M-110 -80 Q-130 60 -80 130 Q-40 160 0 120 Q40 160 80 130 Q130 60 110 -80 Q60 -120 0 -95 Q-60 -120 -110 -80 Z" fill="#d93b2b"/>
+          <path d="M-60 -60 Q-80 40 -50 110" stroke="#f0705f" stroke-width="16" fill="none" stroke-linecap="round"/>
+          <path d="M-30 -100 Q0 -120 30 -100 L20 -150 L-10 -150 Z" fill="#3fa34d"/>
+        </g>
+        <g id="bo-c1" transform="translate(220 720)"><circle r="62" fill="#2fa36b" stroke="#2a1a12" stroke-width="9"/><path d="M-28 2 L-6 24 L30 -22" stroke="#fff" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><g id="bo-c2" transform="translate(540 680)"><circle r="62" fill="#2fa36b" stroke="#2a1a12" stroke-width="9"/><path d="M-28 2 L-6 24 L30 -22" stroke="#fff" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><g id="bo-c3" transform="translate(860 720)"><circle r="62" fill="#2fa36b" stroke="#2a1a12" stroke-width="9"/><path d="M-28 2 L-6 24 L30 -22" stroke="#fff" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+      </svg>
+    </div>
+    <div id="bo-t1" class="t">TAMBIÉN SON <span class="y">BAYAS</span></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#bo-cam", { y: 1920 }, { y: 0, duration: 0.4, ease: "expo.out" }, 0);
+      tl.fromTo("#bo-t1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, 0.3);
+      [["#bo-tom", 0.2, "220 920", "#bo-c1", "220 720"], ["#bo-uva", 1.059, "540 900", "#bo-c2", "540 680"], ["#bo-chi", 1.813, "860 920", "#bo-c3", "860 720"]].forEach(([el, t, o, c, oc]) => {
+        tl.fromTo(el, { scale: 0, svgOrigin: o }, { scale: 1, duration: 0.35, ease: "back.out(2.5)" }, t);
+        tl.fromTo(c, { scale: 0, svgOrigin: oc }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, t + 0.25);
+      });
+      window.__timelines["bonus"] = tl;
+    })();
+  </script>
+</template>

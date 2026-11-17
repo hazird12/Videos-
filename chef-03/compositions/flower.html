@@ -1,0 +1,53 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Montserrat", sans-serif; }
+
+    .t { position: absolute; left: 0; right: 0; text-align: center; font-family: "Archivo Black", "Montserrat", sans-serif;
+         color: #fff; -webkit-text-stroke: 10px #2a1a12; paint-order: stroke fill; letter-spacing: -0.01em; line-height: 0.98;
+         text-shadow: 0 10px 0 rgba(42,26,18,0.35); }
+    .t span { display: inline-block; }
+    .y { color: #ffd23f; } .r { color: #e63b2e; }
+    #fl-cam { position: absolute; inset: 0; }
+    #fl-t1 { top: 215px; font-size: 84px; }
+    #fl-t2 { top: 215px; font-size: 84px; }
+  </style>
+  <div id="root" data-composition-id="flower" data-width="1080" data-height="1920">
+    <div id="fl-cam">
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;inset:0;overflow:visible">
+        <rect width="1080" height="1920" fill="#d8f0d0"/>
+        <path d="M540 1300 Q520 1000 540 840" stroke="#2a1a12" stroke-width="40" fill="none" stroke-linecap="round"/>
+        <path d="M540 1300 Q520 1000 540 840" stroke="#2fa36b" stroke-width="26" fill="none" stroke-linecap="round"/>
+        <path d="M535 1080 Q420 1000 380 1060 Q450 1120 535 1090 Z" fill="#2fa36b" stroke="#2a1a12" stroke-width="8"/>
+        <g id="fl-flower" transform="translate(540 700)">
+          <g id="fl-petals"><ellipse id="fl-p0" cx="0" cy="-95" rx="58" ry="92" fill="#f58fb5" stroke="#2a1a12" stroke-width="8" transform="rotate(0)"/><ellipse id="fl-p1" cx="0" cy="-95" rx="58" ry="92" fill="#f58fb5" stroke="#2a1a12" stroke-width="8" transform="rotate(72)"/><ellipse id="fl-p2" cx="0" cy="-95" rx="58" ry="92" fill="#f58fb5" stroke="#2a1a12" stroke-width="8" transform="rotate(144)"/><ellipse id="fl-p3" cx="0" cy="-95" rx="58" ry="92" fill="#f58fb5" stroke="#2a1a12" stroke-width="8" transform="rotate(216)"/><ellipse id="fl-p4" cx="0" cy="-95" rx="58" ry="92" fill="#f58fb5" stroke="#2a1a12" stroke-width="8" transform="rotate(288)"/></g>
+          <circle id="fl-ovary" r="60" fill="#8fd16a" stroke="#2a1a12" stroke-width="8"/>
+          <!-- la fruta que crece: corte con semillas adentro -->
+          <g id="fl-fruit" opacity="0">
+            <circle r="190" fill="#9b3fb5" stroke="#2a1a12" stroke-width="10"/>
+            <circle r="150" fill="#c97ad9"/>
+            <ellipse cx="0" cy="-70" rx="16" ry="24" fill="#f4e7c3" stroke="#2a1a12" stroke-width="5" transform="rotate(-0.006629525347563003 0 -70)"/><ellipse cx="60" cy="-30" rx="16" ry="24" fill="#f4e7c3" stroke="#2a1a12" stroke-width="5" transform="rotate(63.43299200425381 60 -30)"/><ellipse cx="55" cy="45" rx="16" ry="24" fill="#f4e7c3" stroke="#2a1a12" stroke-width="5" transform="rotate(129.2923009749302 55 45)"/><ellipse cx="-5" cy="80" rx="16" ry="24" fill="#f4e7c3" stroke="#2a1a12" stroke-width="5" transform="rotate(183.58322733811593 -5 80)"/><ellipse cx="-60" cy="40" rx="16" ry="24" fill="#f4e7c3" stroke="#2a1a12" stroke-width="5" transform="rotate(236.32070986741954 -60 40)"/><ellipse cx="-62" cy="-35" rx="16" ry="24" fill="#f4e7c3" stroke="#2a1a12" stroke-width="5" transform="rotate(-60.565661329479155 -62 -35)"/>
+          </g>
+        </g>
+        <g id="fl-one" transform="translate(860 520)" opacity="0"><circle r="70" fill="#ffd23f" stroke="#2a1a12" stroke-width="8"/><text y="28" text-anchor="middle" font-family="Archivo Black" font-size="84" fill="#2a1a12">1</text></g>
+      </svg>
+    </div>
+    <div id="fl-t1" class="t">UNA BAYA SALE<br>DE <span class="y">UNA SOLA FLOR</span></div>
+    <div id="fl-t2" class="t">CON LAS <span class="y">SEMILLAS</span><br>POR DENTRO</div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#fl-cam", { y: 1920 }, { y: 0, duration: 0.45, ease: "expo.out" }, 0);
+      for (let i = 0; i < 5; i++) tl.fromTo("#fl-p" + i, { scale: 0, svgOrigin: "540 700" }, { scale: 1, duration: 0.35, ease: "back.out(2)" }, 0.3 + i * 0.06);
+      tl.fromTo("#fl-t1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, 0.35);
+      tl.fromTo("#fl-one", { opacity: 0, scale: 0.3, svgOrigin: "860 520" }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, 3.465);
+      tl.to("#fl-t1", { opacity: 0, filter: "blur(6px)", duration: 0.13 }, 3.699);
+      tl.to("#fl-one", { opacity: 0, duration: 0.15 }, 4.249);
+      for (let i = 0; i < 5; i++) tl.to("#fl-p" + i, { y: 900, rotation: 80 * (i % 2 ? 1 : -1), opacity: 0, duration: 0.7, ease: "power2.in" }, 3.649 + i * 0.05);
+      tl.fromTo("#fl-fruit", { opacity: 0, scale: 0.3, svgOrigin: "540 700" }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, 3.899);
+      tl.fromTo("#fl-t2", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, 3.999);
+      tl.set(["#fl-t2"], { opacity: 0 }, 0);
+      window.__timelines["flower"] = tl;
+    })();
+  </script>
+</template>
