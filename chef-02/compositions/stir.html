@@ -1,0 +1,51 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Montserrat", sans-serif; }
+
+    .t { position: absolute; left: 0; right: 0; text-align: center; font-family: "Archivo Black", "Montserrat", sans-serif;
+         color: #fff; -webkit-text-stroke: 10px #2a1a12; paint-order: stroke fill; letter-spacing: -0.01em; line-height: 0.98;
+         text-shadow: 0 10px 0 rgba(42,26,18,0.35); }
+    .t span { display: inline-block; }
+    .y { color: #ffd23f; } .r { color: #e63b2e; }
+    #sr-cam { position: absolute; inset: 0; transform-origin: 540px 980px; }
+    .chk { position: absolute; left: 110px; font: 900 66px/1 "Archivo Black", sans-serif; color: #fff; -webkit-text-stroke: 9px #2a1a12; paint-order: stroke fill; display: flex; align-items: center; gap: 26px; }
+    .chk i { display: inline-block; width: 86px; height: 86px; border-radius: 18px; background: #ffd23f; border: 8px solid #2a1a12; position: relative; }
+    .chk i::after { content: ""; position: absolute; left: 22px; top: 6px; width: 24px; height: 46px; border: solid #2a1a12; border-width: 0 12px 12px 0; transform: rotate(45deg); }
+    #sr-c1 { top: 215px; } #sr-c2 { top: 335px; }
+  </style>
+  <div id="root" data-composition-id="stir" data-width="1080" data-height="1920">
+    <div id="sr-cam">
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;inset:0;overflow:visible">
+        <rect width="1080" height="1920" fill="#8e969c"/>
+        <g stroke="#6f777d" stroke-width="10" opacity="0.6"><path d="M0 520 H1080 M0 1480 H1080 M140 0 V1920 M940 0 V1920"/></g>
+        <rect x="-80" y="960" width="200" height="70" rx="30" fill="#b9c0c6" stroke="#2a1a12" stroke-width="10"/>
+        <rect x="960" y="960" width="200" height="70" rx="30" fill="#b9c0c6" stroke="#2a1a12" stroke-width="10"/>
+        <circle cx="540" cy="1000" r="440" fill="#b9c0c6" stroke="#2a1a12" stroke-width="12"/>
+        <circle id="sr-water" cx="540" cy="1000" r="392" fill="#7fc4e8" stroke="#2a1a12" stroke-width="8"/>
+        <g id="sr-swirl" fill="none" stroke="#a9dbf2" stroke-width="12" stroke-linecap="round">
+          <path d="M540 760 A240 240 0 0 1 780 1000"/><path d="M540 1240 A240 240 0 0 1 300 1000"/><path d="M540 860 A140 140 0 0 1 680 1000"/><path d="M540 1140 A140 140 0 0 1 400 1000"/>
+        </g>
+        <g id="sr-pasta"><path d="M464 970 Q370 841 542 986" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M464 970 Q370 841 542 986" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M608 1040 Q597 1084 420 958" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M608 1040 Q597 1084 420 958" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M530 1033 Q568 1037 435 933" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M530 1033 Q568 1037 435 933" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M647 1093 Q481 872 441 987" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M647 1093 Q481 872 441 987" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M538 917 Q371 859 560 1004" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M538 917 Q371 859 560 1004" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M488 1184 Q437 957 520 927" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M488 1184 Q437 957 520 927" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M496 1140 Q386 900 538 997" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M496 1140 Q386 900 538 997" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M517 1013 Q696 876 525 967" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M517 1013 Q696 876 525 967" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M625 1137 Q453 1129 511 1020" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M625 1137 Q453 1129 511 1020" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M716 996 Q373 1090 530 1025" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M716 996 Q373 1090 530 1025" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M573 1041 Q662 1151 510 989" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M573 1041 Q662 1151 510 989" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M476 1061 Q593 1065 633 882" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M476 1061 Q593 1065 633 882" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/></g>
+        <g id="sr-spoon" stroke="#2a1a12" stroke-width="10" stroke-linejoin="round">
+          <rect x="520" y="560" width="40" height="420" rx="18" fill="#c8894e"/>
+          <ellipse cx="540" cy="1010" rx="70" ry="95" fill="#c8894e"/>
+        </g>
+      </svg>
+    </div>
+    <div id="sr-c1" class="chk"><i></i><span>BASTANTE AGUA</span></div>
+    <div id="sr-c2" class="chk"><i></i><span style="color:#ffd23f">MOVER AL INICIO</span></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#sr-cam", { y: 1920 }, { y: 0, duration: 0.4, ease: "expo.out" }, 0);
+      tl.fromTo("#sr-water", { attr: { r: 300 } }, { attr: { r: 392 }, duration: 0.6, ease: "power2.out" }, 0.2);
+      tl.fromTo("#sr-c1", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, 0.2);
+      tl.fromTo("#sr-c2", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, 1.22);
+      tl.fromTo("#sr-spoon", { rotation: 0, svgOrigin: "540 1000" }, { rotation: 540, duration: 2.1, ease: "power1.inOut" }, 1.12);
+      tl.fromTo("#sr-pasta", { rotation: 0, svgOrigin: "540 1000" }, { rotation: 300, duration: 2.1, ease: "power1.inOut" }, 1.22);
+      tl.fromTo("#sr-swirl", { rotation: 0, svgOrigin: "540 1000" }, { rotation: 400, duration: 3.22, ease: "none" }, 0);
+      window.__timelines["stir"] = tl;
+    })();
+  </script>
+</template>

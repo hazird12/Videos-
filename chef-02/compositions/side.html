@@ -1,0 +1,70 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Montserrat", sans-serif; }
+
+    .t { position: absolute; left: 0; right: 0; text-align: center; font-family: "Archivo Black", "Montserrat", sans-serif;
+         color: #fff; -webkit-text-stroke: 10px #2a1a12; paint-order: stroke fill; letter-spacing: -0.01em; line-height: 0.98;
+         text-shadow: 0 10px 0 rgba(42,26,18,0.35); }
+    .t span { display: inline-block; }
+    .y { color: #ffd23f; } .r { color: #e63b2e; }
+    #side-cam { position: absolute; inset: 0; transform-origin: 540px 780px; }
+    #side-t1 { top: 215px; font-size: 76px; }
+    #side-t2 { top: 215px; font-size: 76px; }
+    .tag { position: absolute; font: 900 50px/1 "Archivo Black", sans-serif; color: #2a1a12; background: #fff; border: 7px solid #2a1a12; border-radius: 16px; padding: 10px 20px 14px; }
+    #side-oil { left: 640px; top: 420px; background: #f6d55c; }
+    #side-pasta { left: 600px; top: 1080px; background: #f2c14e; display: none; }
+    #side-stamp { position: absolute; left: 0; right: 0; top: 700px; text-align: center; }
+    #side-stamp span { display: inline-block; font: 900 104px/1 "Archivo Black", sans-serif; color: #fff; background: #e63b2e; border: 10px solid #2a1a12; border-radius: 22px; padding: 14px 34px 22px; }
+  </style>
+  <div id="root" data-composition-id="side" data-width="1080" data-height="1920">
+    <div id="side-cam">
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920" style="position:absolute;inset:0">
+        <rect width="1080" height="1920" fill="#e9e1d3"/>
+        <rect y="1150" width="1080" height="770" fill="#5f666b"/>
+        <g id="side-fire" fill="#3d7fd6" stroke="#2a1a12" stroke-width="5"><path d="M300 1160 q-22 -40 0 -70 q22 30 0 70 z"/><path d="M420 1160 q-22 -40 0 -70 q22 30 0 70 z"/><path d="M540 1160 q-22 -40 0 -70 q22 30 0 70 z"/><path d="M660 1160 q-22 -40 0 -70 q22 30 0 70 z"/><path d="M780 1160 q-22 -40 0 -70 q22 30 0 70 z"/></g>
+        <!-- olla en corte -->
+        <path d="M150 470 L150 1100 Q150 1130 180 1130 L900 1130 Q930 1130 930 1100 L930 470" fill="#7fc4e8" stroke="#2a1a12" stroke-width="14" stroke-linejoin="round"/>
+        <path d="M156 560 L924 560" stroke="#5aa9d3" stroke-width="6"/>
+        <rect x="90" y="455" width="900" height="34" rx="14" fill="#b9c0c6" stroke="#2a1a12" stroke-width="10"/>
+        <g id="side-pastag"><path d="M230 990 q60 -40 120 0 t120 0" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M230 990 q60 -40 120 0 t120 0" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M292 1012 q60 -40 120 0 t120 0" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M292 1012 q60 -40 120 0 t120 0" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M354 1034 q60 -40 120 0 t120 0" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M354 1034 q60 -40 120 0 t120 0" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M416 990 q60 -40 120 0 t120 0" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M416 990 q60 -40 120 0 t120 0" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M478 1012 q60 -40 120 0 t120 0" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M478 1012 q60 -40 120 0 t120 0" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M540 1034 q60 -40 120 0 t120 0" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M540 1034 q60 -40 120 0 t120 0" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M602 990 q60 -40 120 0 t120 0" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M602 990 q60 -40 120 0 t120 0" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M664 1012 q60 -40 120 0 t120 0" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M664 1012 q60 -40 120 0 t120 0" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M726 1034 q60 -40 120 0 t120 0" stroke="#2a1a12" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M726 1034 q60 -40 120 0 t120 0" stroke="#f2c14e" stroke-width="14" fill="none" stroke-linecap="round"/></g>
+        <g><circle id="side-u0" cx="653" cy="1040" r="8.9" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u1" cx="276" cy="1040" r="14.6" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u2" cx="384" cy="1040" r="13.8" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u3" cx="371" cy="1040" r="9.0" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u4" cx="408" cy="1040" r="11.8" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u5" cx="576" cy="1040" r="13.1" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u6" cx="261" cy="1040" r="7.6" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u7" cx="492" cy="1040" r="13.3" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u8" cx="367" cy="1040" r="15.0" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u9" cx="425" cy="1040" r="8.1" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u10" cx="470" cy="1040" r="14.3" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u11" cx="379" cy="1040" r="15.1" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u12" cx="339" cy="1040" r="9.3" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u13" cx="669" cy="1040" r="8.3" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u14" cx="596" cy="1040" r="15.4" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u15" cx="828" cy="1040" r="9.7" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u16" cx="312" cy="1040" r="10.5" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u17" cx="575" cy="1040" r="13.7" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u18" cx="499" cy="1040" r="7.6" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u19" cx="623" cy="1040" r="7.4" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u20" cx="573" cy="1040" r="8.1" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/><circle id="side-u21" cx="576" cy="1040" r="8.4" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="4" opacity="0"/></g>
+        <!-- capa de aceite flotando -->
+        <g id="side-oilg" stroke="#2a1a12" stroke-width="5">
+          <ellipse cx="250" cy="548" rx="70" ry="16" fill="#f6d55c"/><ellipse cx="400" cy="552" rx="90" ry="16" fill="#f6d55c"/><ellipse cx="560" cy="546" rx="60" ry="16" fill="#f6d55c"/><ellipse cx="700" cy="552" rx="85" ry="16" fill="#f6d55c"/><ellipse cx="840" cy="548" rx="55" ry="16" fill="#f6d55c"/>
+        </g>
+        <!-- distancia entre aceite y pasta -->
+        <g id="side-dist" stroke="#2a1a12" stroke-width="8" fill="#ffd23f" stroke-linejoin="round">
+          <path d="M130 600 L100 650 L120 650 L120 930 L100 930 L130 980 L160 930 L140 930 L140 650 L160 650 Z"/>
+        </g>
+      </svg>
+      <div id="side-oil" class="tag">ACEITE</div>
+      <div id="side-pasta" class="tag">PASTA</div>
+    </div>
+    <div id="side-t1" class="t">MÁS LIVIANO<br>QUE EL <span class="y">AGUA</span></div>
+    <div id="side-t2" class="t">FLOTA <span class="y">ARRIBA</span>…<br>LA PASTA, <span class="y">ABAJO</span></div>
+    <div id="side-stamp"><span>¡NI LA TOCA!</span></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#side-cam", { y: 1920 }, { y: 0, duration: 0.45, ease: "expo.out" }, 0);
+      tl.fromTo("#side-fire", { scaleY: 0.9, svgOrigin: "540 1160" }, { scaleY: 1.1, duration: 0.2, ease: "sine.inOut", repeat: 44, yoyo: true }, 0);
+      [{"x":653.3761894702911,"y":1040,"r":8.92656921222806,"t":4.085279473103583,"rise":326.4755703508854},{"x":276.18251383304596,"y":1040,"r":14.6082274899818,"t":2.1689493223018945,"rise":387.4321450293064},{"x":384.3261630833149,"y":1040,"r":13.833786198403686,"t":6.124184341866523,"rise":348.79289224743843},{"x":371.01964965462685,"y":1040,"r":8.985495435073972,"t":4.848122433122247,"rise":418.2200525701046},{"x":407.88379311561584,"y":1040,"r":11.83640085440129,"t":5.313549171848223,"rise":407.1902786567807},{"x":575.9705577790737,"y":1040,"r":13.086227376945317,"t":4.345871547950432,"rise":364.9390112608671},{"x":260.850587785244,"y":1040,"r":7.639361413195729,"t":6.738911194121465,"rise":351.31497122347355},{"x":491.6368119418621,"y":1040,"r":13.34960560593754,"t":4.6519392158035195,"rise":307.3843976855278},{"x":367.096456438303,"y":1040,"r":15.030342706479132,"t":0.8080318394564093,"rise":453.12555618584156},{"x":424.9861578643322,"y":1040,"r":8.09320973046124,"t":5.521677494876087,"rise":331.5129376575351},{"x":470.13354793190956,"y":1040,"r":14.269749578554183,"t":0.6708418823499233,"rise":422.1959336102009},{"x":378.63457426428795,"y":1040,"r":15.117933450266719,"t":7.08975775756687,"rise":357.11106207221746},{"x":339.45630744099617,"y":1040,"r":9.263489225879312,"t":6.179862530926243,"rise":389.70547016710043},{"x":669.1546818614006,"y":1040,"r":8.253789861220866,"t":3.6618910062555226,"rise":447.45627645403147},{"x":595.8711640536785,"y":1040,"r":15.36874071508646,"t":0.6379432693347336,"rise":424.1413661837578},{"x":828.0597259104252,"y":1040,"r":9.700071090366691,"t":0.5788374466374517,"rise":408.92557706683874},{"x":311.643800586462,"y":1040,"r":10.464157388079911,"t":5.824441322049126,"rise":405.65918430685997},{"x":574.5690301060677,"y":1040,"r":13.668921366799623,"t":6.265783646671102,"rise":418.76309614628553},{"x":498.7858620285988,"y":1040,"r":7.592613480985165,"t":5.073874320967123,"rise":382.15588610619307},{"x":622.7917489409447,"y":1040,"r":7.39174564415589,"t":7.269234605297447,"rise":308.28962203115225},{"x":573.2248218357563,"y":1040,"r":8.133879125118256,"t":2.4598684396073223,"rise":376.8823216110468},{"x":576.1098569631577,"y":1040,"r":8.433177760336548,"t":3.645163339223713,"rise":426.3837390765548}].forEach((b, i) => { tl.fromTo("#side-u" + i, { opacity: 0, y: 0 }, { opacity: 1, y: -b.rise, duration: 1.1, ease: "power1.in" }, b.t); tl.set("#side-u" + i, { opacity: 0 }, b.t + 1.1); });
+      tl.set("#side-oilg", { y: -260, opacity: 0 }, 0);
+      tl.fromTo("#side-oilg", { y: -260, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "bounce.out" }, 0.35);
+      tl.fromTo("#side-oilg", { y: 0 }, { y: -6, duration: 0.6, ease: "sine.inOut", repeat: 13, yoyo: true }, 1.0);
+      tl.fromTo("#side-oil", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, 0.7);
+      tl.fromTo("#side-t1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, 0.935);
+      tl.to("#side-t1", { opacity: 0, filter: "blur(6px)", duration: 0.13 }, 3.255);
+      tl.fromTo("#side-t2", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, 3.385);
+      tl.set("#side-pasta", { display: "block" }, 0);
+      tl.fromTo("#side-pasta", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, 5.546);
+      tl.fromTo("#side-pastag", { x: 0 }, { x: 14, duration: 0.3, ease: "sine.inOut", repeat: 29, yoyo: true }, 0);
+      tl.fromTo("#side-dist", { opacity: 0, scaleY: 0.2, svgOrigin: "130 790" }, { opacity: 1, scaleY: 1, duration: 0.35, ease: "back.out(2)" }, 7.531);
+      tl.fromTo("#side-stamp", { opacity: 0, scale: 2.2, rotation: -10 }, { opacity: 1, scale: 1, rotation: -6, duration: 0.2, ease: "power4.in" }, 7.581);
+      tl.set("#side-stamp", { opacity: 0 }, 0);
+      tl.set("#side-t2", { opacity: 0 }, 0);
+      window.__timelines["side"] = tl;
+    })();
+  </script>
+</template>
